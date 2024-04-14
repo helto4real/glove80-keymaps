@@ -1,3 +1,6 @@
+#define SPACE_HOLDING_TYPE "tap-preferred"
+#define SPACE_HOLDING_TIME 275
+
 // NOTE: Use the `#define` settings below to customize this keymap!
 // For example, here are the main optional features you can enable:
 #define DIFFICULTY_LEVEL  0 // 0:custom, 1:easy -> 5:hard (see below)
