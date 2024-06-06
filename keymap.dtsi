@@ -1,3 +1,4 @@
+
 #define SPACE_HOLDING_TYPE "tap-preferred"
 #define SPACE_HOLDING_TIME 275
 
@@ -3968,7 +3969,7 @@ behaviors {
     parang_left: left_parenthesis_and_less_than {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        bindings = <&kp LPAR>, <&kp LT>;
+        bindings = <&kp _LPAR>, <&kp _LT>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
 
@@ -3978,11 +3979,9 @@ behaviors {
     parang_right: right_parenthesis_and_greater_than {
         compatible = "zmk,behavior-mod-morph";
         #binding-cells = <0>;
-        bindings = <&kp RPAR>, <&kp GT>;
+        bindings = <&kp _RPAR>, <&kp _GT>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
     };
-
-    // This is custom from the Engrammer layout for Swedish keyboard 
     //
     // Shift + LEFT_BRACKET = LEFT_BRACE
     //
@@ -4001,6 +4000,31 @@ behaviors {
         #binding-cells = <0>;
         bindings = <&kp _RBKT>, <&kp _RBRC>;
         mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+    // Windows sleep key
+    win_sleep: win_sleep {
+        wait-ms = <100>;
+        tap-ms = <5>;
+        compatible = "zmk,behavior-macro";
+        label = "WIN_SLEEP_KEY";
+        #binding-cells = <0>;
+        bindings = <&kp LG(X) &kp N &kp SV_OE>;
+    };
+
+    // Email address
+    email: email {
+        compatible = "zmk,behavior-macro";
+        label = "EMAIL";
+        #binding-cells = <0>;
+        bindings = <
+            &kp T &kp O &kp M &kp A &kp S
+            &kp _DOT
+            &kp H &kp E &kp L &kp L &kp S &kp T &kp R &kp O &kp M
+                &kp _AT
+                &kp Y &kp A &kp H &kp O &kp O
+                &kp _DOT
+                &kp S &kp E
+            >;
     };
     //
     // Custom shifted pairs for the Engram layout
@@ -4324,6 +4348,53 @@ macros {
         tap-ms = <SELECT_WORD_DELAY>;
         bindings = <&kp LS(UP) &kp LS(_HOME)>;
     )
+    // convert dead keys to their living counterparts when needed
+    #define UNDEAD(name, ...) \
+        ZMK_MACRO(name, \
+            wait-ms = <1>; \
+            tap-ms = <1>; \
+            bindings = __VA_ARGS__; \
+        )
+
+    #define UNDEAD_SEQ_BASE(keystrokes) \
+        <&macro_tap &kp keystrokes>
+      
+    #define UNDEAD_SEQ_DEAD(keystrokes) \
+        <&macro_tap &kp keystrokes &kp SPACE>
+      
+    UNDEAD(base_tilde,
+        #if defined(_TILDE)
+          UNDEAD_SEQ_BASE(_TILDE)
+
+        #elif defined(DEAD_TILDE)
+          UNDEAD_SEQ_DEAD(DEAD_TILDE)
+        #endif
+    )
+    UNDEAD(base_caret,
+        #if defined(_CARET)
+          UNDEAD_SEQ_BASE(_CARET)
+
+        #elif defined(DEAD_CARET)
+          UNDEAD_SEQ_DEAD(DEAD_CARET)
+        #endif
+    )
+    UNDEAD(base_grave,
+        #if defined(_GRAVE)
+          UNDEAD_SEQ_BASE(_GRAVE)
+
+        #elif defined(DEAD_GRAVE)
+          UNDEAD_SEQ_DEAD(DEAD_GRAVE)
+        #endif
+    )
+    UNDEAD(base_acute,
+        #if defined(_ACUTE)
+          UNDEAD_SEQ_BASE(_ACUTE)
+
+        #elif defined(DEAD_ACUTE)
+          UNDEAD_SEQ_DEAD(DEAD_ACUTE)
+        #endif
+    )
+
 
     //////////////////////////////////////////////////////////////////////////
     //
