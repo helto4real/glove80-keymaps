@@ -1,0 +1,23 @@
+    // CUSTOM -- BRACKETS HELTO
+    ////////////////////////////////////////////////////////////////////////////////
+
+    //
+    // Shift + LEFT_BRACKET = LEFT_BRACE
+    //
+    left_bracket: left_bracket_and_left_brace {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp _LBKT>, <&kp _LBRC>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+    //
+    // Shift + RIGHT_BRACKET = RIGHT_BRACE
+    //
+    right_bracket: right_bracket_and_right_brace {
+        compatible = "zmk,behavior-mod-morph";
+        #binding-cells = <0>;
+        bindings = <&kp _RBKT>, <&kp _RBRC>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+    ////////////////////////////////////////////////////////////////////////////////

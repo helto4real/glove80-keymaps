@@ -1,0 +1,50 @@
+    // CUSTOM -- UNDEAD CHARACTERS HELTO
+    ////////////////////////////////////////////////////////////////////////////////
+
+    // convert dead keys to their living counterparts when needed
+    #define UNDEAD(name, ...) \
+        ZMK_MACRO(name, \
+            wait-ms = <1>; \
+            tap-ms = <1>; \
+            bindings = __VA_ARGS__; \
+        )
+
+    #define UNDEAD_SEQ_BASE(keystrokes) \
+        <&macro_tap &kp keystrokes>
+      
+    #define UNDEAD_SEQ_DEAD(keystrokes) \
+        <&macro_tap &kp keystrokes &kp SPACE>
+      
+    UNDEAD(base_tilde,
+        #if defined(_TILDE)
+          UNDEAD_SEQ_BASE(_TILDE)
+
+        #elif defined(DEAD_TILDE)
+          UNDEAD_SEQ_DEAD(DEAD_TILDE)
+        #endif
+    )
+    UNDEAD(base_caret,
+        #if defined(_CARET)
+          UNDEAD_SEQ_BASE(_CARET)
+
+        #elif defined(DEAD_CARET)
+          UNDEAD_SEQ_DEAD(DEAD_CARET)
+        #endif
+    )
+    UNDEAD(base_grave,
+        #if defined(_GRAVE)
+          UNDEAD_SEQ_BASE(_GRAVE)
+
+        #elif defined(DEAD_GRAVE)
+          UNDEAD_SEQ_DEAD(DEAD_GRAVE)
+        #endif
+    )
+    UNDEAD(base_acute,
+        #if defined(_ACUTE)
+          UNDEAD_SEQ_BASE(_ACUTE)
+
+        #elif defined(DEAD_ACUTE)
+          UNDEAD_SEQ_DEAD(DEAD_ACUTE)
+        #endif
+    )
+    ////////////////////////////////////////////////////////////////////////////////
