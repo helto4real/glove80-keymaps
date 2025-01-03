@@ -13,25 +13,25 @@ device_tree_file="device.dtsi"
 custom_behaviors_file="keymap.dtsi"
 output_file="./firmware/config/glove80.keymap"
 
-# Create temporary files to hold substitution content
-tmp_device_tree=$(mktemp)
-tmp_custom_behaviors=$(mktemp)
-
-# Write the content of the input files to temporary files
-cat "$device_tree_file" > "$tmp_device_tree"
-cat "$custom_behaviors_file" > "$tmp_custom_behaviors"
-
-# Use sed with the temporary files to perform substitutions
-sed -e "/@@DEVICE_TREE@@/{
-    r $tmp_device_tree
+sed -e '/\/\* Custom Device-tree \*\//,/\/\* Glove80 system behavior & macros \*\// {
+    /\/\* Custom Device-tree \*\// {
+        p
+        r device.dtsi
+    }
+    /\/\* Glove80 system behavior & macros \*\//p
     d
-}" -e "/@@CUSTOM_BEHAVIORS@@/{
-    r $tmp_custom_behaviors
+}' -e '/\/\* Custom Defined Behaviors \*\//,/\/\* Automatically generated macro definitions \*\// {
+    /\/\* Custom Defined Behaviors \*\// {
+        p
+        a\
+/ {
+        r keymap.dtsi
+        a\
+};
+    }
+    /\/\* Automatically generated macro definitions \*\//p
     d
-}" "$template_file" > "$output_file"
-
-# Clean up temporary files
-rm -f "$tmp_device_tree" "$tmp_custom_behaviors"
+}' keymap.zmk > $output_file
 
 echo "File '$output_file' created successfully."
 
