@@ -1,0 +1,30 @@
+    // CUSTOM -- BEHAVIORS HELTO
+    ////////////////////////////////////////////////////////////////////////////////
+
+    // Windows sleep key
+    win_sleep: win_sleep {
+        wait-ms = <100>;
+        tap-ms = <5>;
+        compatible = "zmk,behavior-macro";
+        label = "WIN_SLEEP_KEY";
+        #binding-cells = <0>;
+        bindings = <&kp LG(X) &kp N &kp SV_OE>;
+    };
+
+    // Email address
+    email: email {
+        compatible = "zmk,behavior-macro";
+        label = "EMAIL";
+        #binding-cells = <0>;
+        bindings = <
+            &kp T &kp O &kp M &kp A &kp S
+            &kp _DOT
+            &kp H &kp E &kp L &kp L &kp S &kp T &kp R &kp O &kp M
+                &kp _AT
+                &kp Y &kp A &kp H &kp O &kp O
+                &kp _DOT
+                &kp S &kp E
+            >;
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////

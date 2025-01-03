@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2020 The ZMK Contributors
  * Copyright (c) 2023 Innaworks Development Limited, trading as MoErgo
@@ -526,7 +527,6 @@
   };
   // ==== PER-KEY-RGB <section ends> =====
 #endif
-
 
 
 /* Glove80 system behavior & macros */
@@ -10098,7 +10098,7 @@ UNICODE_MORPH_MODS
 
         layer_Function {
             bindings = <
-   &none               &none               &none               &none               &none                                                                                                                  &none         &none         &none          &none           &none
+   &none               &none               &none               &none               &none                                                                                                                  &none         &none         &none          &none           &win_sleep
  &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                               &kp C_MEDIA_HOME     &kp C_PLAY    &kp C_PREV    &kp C_NEXT     &kp C_STOP     &kp C_EJECT
    &none           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &none                                                                                     &kp K_CALC         &kp F7        &kp F8        &kp F9        &kp F10         &kp F13
    &none  &kp LEFT_PINKY_MOD  &kp LEFT_RINGY_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &none                                                                                      &kp K_WWW         &kp F4        &kp F5        &kp F6        &kp F11         &kp F14

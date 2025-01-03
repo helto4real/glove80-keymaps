@@ -1,0 +1,81 @@
+// CUSTOM -- LOCALES HELTO
+////////////////////////////////////////////////////////////////////////////////
+#ifndef LOCALE
+//#define LOCALE 1 // en-US
+#define LOCALE 2 // sv-SE
+#endif
+#if LOCALE == 2
+    #define _AMPS  LS(N6)
+    #define _AT    RA(N2)
+    #define DEAD_CARET RBRC
+    #define _COLON LS(DOT)
+    #define _DLLR  RA(N4)
+    #define _DQT   LS(N2)
+    #define _EXCL  LS(N1)
+    #define _GT    LS(NON_US_BSLH)
+    #define _HASH  LS(N3)
+    #define _LBRC  RA(N7)
+    #define _LPAR  LS(N8)
+    #define _LT    NON_US_BSLH
+    #define _PIPE  RA(NON_US_BSLH)
+    #define _PLUS  MINUS
+    #define _MINUS FSLH
+    #define _PRCNT LS(N5)
+    #define _QMARK LS(MINUS)
+    #define _RBRC  RA(N0)
+    #define _RPAR  LS(N9)
+    #define _STAR  PIPE
+    #define DEAD_TILDE RA(RBKT)
+    #define _UNDER LS(FSLH)
+    #define _SQT   BSLH
+    #define _FSLH  LS(N7)
+    #define _BSLH  RA(MINUS)
+    #define _EQUAL LS(N0)
+    #define _LBKT  RA(N8)
+    #define _RBKT  RA(N9)
+    #define _COMMA COMMA
+    #define _DOT   DOT
+    #define _SEMI  LS(COMMA)
+    #define _COLON LS(DOT)
+    #define DEAD_GRAVE LS(EQUAL)
+    #define DEAD_ACUTE EQUAL
+    #define SV_AA  LBKT
+    #define SV_AE  SQT
+    #define SV_OE  SEMI
+#else
+    #define _AMPS  LS(N7)
+    #define _AT    LS(N2)
+    #define _CARET LS(N6)
+    #define _COLON LS(SEMI)
+    #define _DLLR  LS(N4)
+    #define _DQT   LS(SQT)
+    #define _EXCL  LS(N1)
+    #define _GT    LS(DOT)
+    #define _HASH  LS(N3)
+    #define _LBRC  LS(LBKT)
+    #define _LPAR  LS(N9)
+    #define _LT    LS(COMMA)
+    #define _PIPE  LS(BSLH)
+    #define _PLUS  LS(EQUAL)
+    #define _MINUS MINUS
+    #define _PRCNT LS(N5)
+    #define _QMARK LS(FSLH)
+    #define _RBRC  LS(RBKT)
+    #define _RPAR  LS(N0)
+    #define _STAR  LS(N8)
+    #define _TILDE LS(GRAVE)
+    #define _UNDER LS(MINUS)
+    #define _SQT   SQT
+    #define _FSLH  FSLH
+    #define _BSLH  BSLH
+    #define _EQUAL EQUAL
+    #define _LBKT  LBKT
+    #define _RBKT  RBKT
+    #define _COMMA COMMA
+    #define _DOT   DOT
+    #define _SEMI  SEMI
+    #define _COLON COLON
+    #define _GRAVE GRAVE
+    #define _ACUTE GRAVE
+#endif
+////////////////////////////////////////////////////////////////////////////////

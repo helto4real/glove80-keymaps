@@ -9,7 +9,7 @@
 //#define WORLD_HOST_AZERTY  // host computer is set to AZERTY locale
 //#define WORLD_SHIFT_NUMBER // apply Shift to type number row digits
 // TIP: Add more setting overrides here instead of editing them below.
-
+<%= ERB.new(File.read('custom_defines.erb'), nil, nil, '_sub01').result(binding) %>
 //////////////////////////////////////////////////////////////////////////////
 //
 // Sunaku's Keymap v40 -- "Glorious Engrammer"
@@ -126,6 +126,7 @@
 %>
 #endif
 
+<%= ERB.new(File.read('custom_locales.erb'), nil, nil, '_sub01').result(binding) %>
 //
 // Keymap specific knowledge of the base layer's alpha + ZMK layout
 //
@@ -270,6 +271,7 @@ combos {
 
 behaviors {
 
+<%= ERB.new(File.read('custom_behaviors.erb'), nil, nil, '_sub01').result(binding) %>
   //////////////////////////////////////////////////////////////////////////
   //
   // Miryoku layers and home row mods (ported from my QMK endgame)
@@ -1245,6 +1247,7 @@ macros {
     bindings = <&kp LS(UP) &kp LS(_HOME)>;
   )
 
+<%= ERB.new(File.read('custom_undead_characters.erb'), nil, nil, '_sub01').result(binding) %>
   //////////////////////////////////////////////////////////////////////////
   //
   // World layer - international characters
