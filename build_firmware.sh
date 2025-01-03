@@ -8,9 +8,6 @@ set -euo pipefail
 # build the keymap file from the output from the rake task and the keymap template
 
 # Input files
-template_file="./firmware/keymap.template.zmk"
-device_tree_file="device.dtsi"
-custom_behaviors_file="keymap.dtsi"
 output_file="./firmware/config/glove80.keymap"
 
 sed -e '/\/\* Custom Device-tree \*\//,/\/\* Glove80 system behavior & macros \*\// {
