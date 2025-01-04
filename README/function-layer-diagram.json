@@ -27,12 +27,15 @@
     "F7",
     "F8",
     "F9",
-    "F10"
+    {
+      "c": "#0fe587",
+      "g": false
+    },
+    "Sleep"
   ],
   [
     {
-      "c": "#ffccbc",
-      "g": false
+      "c": "#ffccbc"
     },
     "Escape",
     "Enter",

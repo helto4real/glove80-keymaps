@@ -4,12 +4,16 @@
   },
   [
     {
-      "t": "#EEEEEE",
-      "g": true,
+      "c": "#0fe587",
       "p": "CHICKLET",
       "a": 7
     },
-    "",
+    "Email",
+    {
+      "c": "#cccccc",
+      "t": "#EEEEEE",
+      "g": true
+    },
     "",
     {
       "t": "#000000"

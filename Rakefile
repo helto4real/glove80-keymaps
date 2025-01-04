@@ -88,12 +88,13 @@ end
 layers_pdf = 'README/all-layer-diagrams.pdf'
 task :pdf => layers_pdf
 
+  # base-layer-diagram-Engrammer
+  # base-layer-diagram-Engram
+  # base-layer-diagram-template
+  # use the color #0fe587 for custom defined keys
 layers_pdf_sequence = %w[
   base-layer-diagram
-  base-layer-diagram-Engrammer
-  base-layer-diagram-Engram
   base-layer-diagram-QWERTY
-  base-layer-diagram-template
   lower-layer-diagram
   magic-layer-diagram
   cursor-layer-diagram
