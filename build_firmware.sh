@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-./rake
+./rake -B
 
 # build the keymap file from the output from the rake task and the keymap template
 
