@@ -403,7 +403,7 @@
           ________ ________ ________ ________ ________                                                                          ________ ________ ________ ________ ________
           ________ ________ ________ ________ LILAC    ________                                                        ________ ________ ________ ________ ________ ________
           ________ ________ ________ ________ ________ ________                                                        ________ ________ ________ ________ ________ ________
-          ________ ________ ________ ________ ________ ________                                                        ________     CYAN     CYAN     CYAN     CYAN ________
+          ________ ________ ________ ________ ________ ________                                                            CYAN     CYAN     CYAN     CYAN ________ ________
           ________ ________ ________ ________ ________ ________ ________ ________ RED       ________ ________ ________ ________ ________ ________ ________ ________ ________
           ________ ________ ________ ________ ________          DULL_GRN ________ ________  ________ ________ ________          ________ ________ ________ ________ ________
         >;
@@ -527,8 +527,6 @@
   };
   // ==== PER-KEY-RGB <section ends> =====
 #endif
-
-
 /* Glove80 system behavior & macros */
 / {
     behaviors {
@@ -887,85 +885,105 @@
 #endif
 
 // CUSTOM -- LOCALES HELTO
+// I will change the keymaps later to the underscored versions
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef LOCALE
-//#define LOCALE 1 // en-US
-#define LOCALE 2 // sv-SE
-#endif
-#if LOCALE == 2
-    #define _AMPS  LS(N6)
-    #define _AT    RA(N2)
-    #define DEAD_CARET RBRC
-    #define _COLON LS(DOT)
-    #define _DLLR  RA(N4)
-    #define _DQT   LS(N2)
-    #define _EXCL  LS(N1)
-    #define _GT    LS(NON_US_BSLH)
-    #define _HASH  LS(N3)
-    #define _LBRC  RA(N7)
-    #define _LPAR  LS(N8)
-    #define _LT    NON_US_BSLH
-    #define _PIPE  RA(NON_US_BSLH)
-    #define _PLUS  MINUS
-    #define _MINUS FSLH
-    #define _PRCNT LS(N5)
-    #define _QMARK LS(MINUS)
-    #define _RBRC  RA(N0)
-    #define _RPAR  LS(N9)
-    #define _STAR  PIPE
-    #define DEAD_TILDE RA(RBKT)
-    #define _UNDER LS(FSLH)
-    #define _SQT   BSLH
-    #define _FSLH  LS(N7)
-    #define _BSLH  RA(MINUS)
-    #define _EQUAL LS(N0)
-    #define _LBKT  RA(N8)
-    #define _RBKT  RA(N9)
-    #define _COMMA COMMA
-    #define _DOT   DOT
-    #define _SEMI  LS(COMMA)
-    #define _COLON LS(DOT)
-    #define DEAD_GRAVE LS(EQUAL)
-    #define DEAD_ACUTE EQUAL
-    #define SV_AA  LBKT
-    #define SV_AE  SQT
-    #define SV_OE  SEMI
-#else
-    #define _AMPS  LS(N7)
-    #define _AT    LS(N2)
-    #define _CARET LS(N6)
-    #define _COLON LS(SEMI)
-    #define _DLLR  LS(N4)
-    #define _DQT   LS(SQT)
-    #define _EXCL  LS(N1)
-    #define _GT    LS(DOT)
-    #define _HASH  LS(N3)
-    #define _LBRC  LS(LBKT)
-    #define _LPAR  LS(N9)
-    #define _LT    LS(COMMA)
-    #define _PIPE  LS(BSLH)
-    #define _PLUS  LS(EQUAL)
-    #define _MINUS MINUS
-    #define _PRCNT LS(N5)
-    #define _QMARK LS(FSLH)
-    #define _RBRC  LS(RBKT)
-    #define _RPAR  LS(N0)
-    #define _STAR  LS(N8)
-    #define _TILDE LS(GRAVE)
-    #define _UNDER LS(MINUS)
-    #define _SQT   SQT
-    #define _FSLH  FSLH
-    #define _BSLH  BSLH
-    #define _EQUAL EQUAL
-    #define _LBKT  LBKT
-    #define _RBKT  RBKT
-    #define _COMMA COMMA
-    #define _DOT   DOT
-    #define _SEMI  SEMI
-    #define _COLON COLON
-    #define _GRAVE GRAVE
-    #define _ACUTE GRAVE
-#endif
+
+// Remap these to make some macros work for swedish layout
+#define LPAR  LS(N8)
+#define RPAR  LS(N9)
+#define LT    NON_US_BSLH
+#define GT    LS(NON_US_BSLH)
+
+#define _AT    RA(N2)
+#define _DOT   DOT
+
+#define SV_AA  LBKT
+#define SV_AE  SQT
+#define SV_OE  SEMI
+
+#define DEAD_CARET RBRC
+#define DEAD_TILDE RA(RBKT)
+#define DEAD_GRAVE LS(EQUAL)
+#define DEAD_ACUTE EQUAL
+// These will be used later
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // Keymap specific knowledge of the base layer's alpha + ZMK layout
@@ -9938,9 +9956,7 @@ UNICODE_MORPH_MODS
   emoji_hair_style_preset: &emoji_white_hair {};
 #endif
 /*HACK*//{
-
 };
-
 /* Automatically generated macro definitions */
 / {
     macros {
@@ -10087,22 +10103,22 @@ UNICODE_MORPH_MODS
 
         layer_Number {
             bindings = <
-   &none               &none               &none               &none               &none                                                                                                             &none         &none          &none          &none             &none
- &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                                    &kp TILDE   &kp CARET      &kp HASH       &kp DLLR       &kp EXCL            &kp AT
-   &kp A           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &kp D                                                                                    &kp LS(G)  &kp _KP_N7    &kp _KP_N8     &kp _KP_N9      &kp COLON         &kp PRCNT
-   &kp B  &kp LEFT_PINKY_MOD  &kp LEFT_RINGY_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &kp E                                                                                        &kp K  &kp _KP_N4    &kp _KP_N5     &kp _KP_N6  &kp _KP_MINUS      &kp _KP_PLUS
-   &kp C         &select_all        &select_line        &select_word               &kp X    &kp F       &none   &none  &tog LAYER_Number         &kp LT       &kp GT  &kp _KP_EQUAL      &kp J  &kp _KP_N1    &kp _KP_N2     &kp _KP_N3  &kp _KP_SLASH  &kp _KP_ASTERISK
-   &none               &none        &extend_line        &extend_word           &kp UNDER           &kp KP_NUM   &none              &none  &kp _KP_COMMA  &kp _KP_DOT     &kp _KP_N0             &kp RA(N8)  &parang_left  &parang_right     &kp RA(N9)          &kp PIPE
+   &none               &none               &none               &none               &none                                                                                                                &none         &none          &none        &none                &none
+ &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                                    &base_tilde  &base_caret      &kp HASH     &kp RA(N4)     &kp EXCL           &kp RA(N2)
+   &kp A           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &kp D                                                                                      &kp LS(G)   &kp _KP_N7    &kp _KP_N8     &kp _KP_N9  &kp LS(DOT)           &kp LS(N5)
+   &kp B  &kp LEFT_PINKY_MOD  &kp LEFT_RINGY_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &kp E                                                                                          &kp K   &kp _KP_N4    &kp _KP_N5     &kp _KP_N6     &kp FSLH            &kp MINUS
+   &kp C         &select_all        &select_line        &select_word               &kp X    &kp F       &none   &none  &tog LAYER_Number         &kp LT       &kp GT  &kp _KP_EQUAL        &kp J   &kp _KP_N1    &kp _KP_N2     &kp _KP_N3   &kp LS(N7)         &kp LS(BSLH)
+   &none               &none        &extend_line        &extend_word           &kp UNDER           &kp KP_NUM   &none              &none  &kp _KP_COMMA  &kp _KP_DOT     &kp _KP_N0                &kp RA(N8)  &parang_left  &parang_right   &kp RA(N9)  &kp RA(NON_US_BSLH)
             >;
         };
 
         layer_Function {
             bindings = <
-   &none               &none               &none               &none               &none                                                                                                                  &none         &none         &none          &none           &win_sleep
+   &none               &none               &none               &none               &none                                                                                                          &kp K_REFRESH         &none         &none          &none      &win_sleep
  &kp ESC             &kp RET           &kp SPACE             &kp TAB             &kp DEL  &kp INS                                                                               &kp C_MEDIA_HOME     &kp C_PLAY    &kp C_PREV    &kp C_NEXT     &kp C_STOP     &kp C_EJECT
    &none           &sk LSHFT           &kp _REDO           &kp _UNDO            &kp BSPC    &none                                                                                     &kp K_CALC         &kp F7        &kp F8        &kp F9        &kp F10         &kp F13
    &none  &kp LEFT_PINKY_MOD  &kp LEFT_RINGY_MOD  &kp LEFT_MIDDY_MOD  &kp LEFT_INDEX_MOD    &none                                                                                      &kp K_WWW         &kp F4        &kp F5        &kp F6        &kp F11         &kp F14
-   &none         &select_all        &select_line        &select_word               &none    &none   &none   &none  &tog LAYER_Function    &kp C_PP    &kp C_PREV    &kp C_NEXT    &kp C_AL_FILES         &kp F1        &kp F2        &kp F3        &kp F12         &kp F15
+   &none         &select_all        &select_line        &select_word               &none    &none   &none   &none  &tog LAYER_Function    &kp C_PP    &kp C_PREV    &kp C_NEXT         &kp RG(E)         &kp F1        &kp F2        &kp F3        &kp F12         &kp F15
    &none               &none        &extend_line        &extend_word               &none            &none   &none                &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP                    &kp C_BRI_MAX  &kp C_BRI_UP  &kp C_BRI_DN  &kp C_BRI_MIN  &kp C_BRI_AUTO
             >;
         };

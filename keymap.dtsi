@@ -9,7 +9,12 @@
 //#define WORLD_HOST_AZERTY  // host computer is set to AZERTY locale
 //#define WORLD_SHIFT_NUMBER // apply Shift to type number row digits
 // TIP: Add more setting overrides here instead of editing them below.
-
+// CUSTOM -- DEFINES HELTO
+////////////////////////////////////////////////////////////////////////////////
+#define SPACE_HOLDING_TYPE "tap-preferred"
+#define SPACE_HOLDING_TIME 275
+#define OPERATING_SYSTEM 'W'
+////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 //
 // Sunaku's Keymap v40 -- "Glorious Engrammer"
@@ -121,419 +126,110 @@
 #define _KP_ENTER ENTER
 #endif
 
+// CUSTOM -- LOCALES HELTO
+// I will change the keymaps later to the underscored versions
+////////////////////////////////////////////////////////////////////////////////
+
+// Remap these to make some macros work for swedish layout
+#define LPAR  LS(N8)
+#define RPAR  LS(N9)
+#define LT    NON_US_BSLH
+#define GT    LS(NON_US_BSLH)
+
+#define _AT    RA(N2)
+#define _DOT   DOT
+
+#define SV_AA  LBKT
+#define SV_AE  SQT
+#define SV_OE  SEMI
+
+#define DEAD_CARET RBRC
+#define DEAD_TILDE RA(RBKT)
+#define DEAD_GRAVE LS(EQUAL)
+#define DEAD_ACUTE EQUAL
+// These will be used later
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
 //
 // Keymap specific knowledge of the base layer's alpha + ZMK layout
 //
-#if defined(LAYER_Enthium) && LAYER_Enthium == 0
-#define KEY_LH_C6R1 HOME
-#define KEY_LH_C5R1 END
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 PG_UP
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 UP
-#define KEY_LH_C6R3 PG_DN
-#define KEY_LH_C5R3 B
-#define KEY_LH_C4R3 Y
-#define KEY_LH_C3R3 O
-#define KEY_LH_C2R3 U
-#define KEY_LH_C1R3 SEMI
-#define KEY_RH_C1R3 X
-#define KEY_RH_C2R3 L
-#define KEY_RH_C3R3 D
-#define KEY_RH_C4R3 W
-#define KEY_RH_C5R3 V
-#define KEY_RH_C6R3 DOWN
-#define KEY_LH_C6R4 Z
-#define KEY_LH_C5R4 C
-#define KEY_LH_C4R4 I
-#define KEY_LH_C3R4 E
-#define KEY_LH_C2R4 A
-#define KEY_LH_C1R4 COMMA
-#define KEY_RH_C1R4 K
-#define KEY_RH_C2R4 H
-#define KEY_RH_C3R4 T
-#define KEY_RH_C4R4 N
-#define KEY_RH_C5R4 S
-#define KEY_RH_C6R4 Q
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 SQT
-#define KEY_LH_C4R5 MINUS
-#define KEY_LH_C3R5 EQUAL
-#define KEY_LH_C2R5 DOT
-#define KEY_LH_C1R5 FSLH
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 J
-#define KEY_RH_C2R5 M
-#define KEY_RH_C3R5 G
-#define KEY_RH_C4R5 P
-#define KEY_RH_C5R5 F
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 GRAVE
-#define KEY_LH_C4R6 LBKT
-#define KEY_LH_C3R6 RBKT
-#define KEY_LH_C2R6 BSLH
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 R
-#define KEY_RH_C3R6 LPAR
-#define KEY_RH_C4R6 RPAR
-#define KEY_RH_C5R6 INS
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Engrammer) && LAYER_Engrammer == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 BSLH
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 B
-#define KEY_LH_C4R3 Y
-#define KEY_LH_C3R3 O
-#define KEY_LH_C2R3 U
-#define KEY_LH_C1R3 SQT
-#define KEY_RH_C1R3 SEMI
-#define KEY_RH_C2R3 L
-#define KEY_RH_C3R3 D
-#define KEY_RH_C4R3 W
-#define KEY_RH_C5R3 V
-#define KEY_RH_C6R3 Z
-#define KEY_LH_C6R4 Z
-#define KEY_LH_C5R4 C
-#define KEY_LH_C4R4 I
-#define KEY_LH_C3R4 E
-#define KEY_LH_C2R4 A
-#define KEY_LH_C1R4 COMMA
-#define KEY_RH_C1R4 DOT
-#define KEY_RH_C2R4 H
-#define KEY_RH_C3R4 T
-#define KEY_RH_C4R4 S
-#define KEY_RH_C5R4 N
-#define KEY_RH_C6R4 Q
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 G
-#define KEY_LH_C4R5 X
-#define KEY_LH_C3R5 J
-#define KEY_LH_C2R5 K
-#define KEY_LH_C1R5 MINUS
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 FSLH
-#define KEY_RH_C2R5 R
-#define KEY_RH_C3R5 M
-#define KEY_RH_C4R5 F
-#define KEY_RH_C5R5 P
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Engram) && LAYER_Engram == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 LBKT
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 RBKT
-#define KEY_LH_C6R3 AT
-#define KEY_LH_C5R3 B
-#define KEY_LH_C4R3 Y
-#define KEY_LH_C3R3 O
-#define KEY_LH_C2R3 U
-#define KEY_LH_C1R3 SQT
-#define KEY_RH_C1R3 DQT
-#define KEY_RH_C2R3 L
-#define KEY_RH_C3R3 D
-#define KEY_RH_C4R3 W
-#define KEY_RH_C5R3 V
-#define KEY_RH_C6R3 Z
-#define KEY_LH_C6R4 Z
-#define KEY_LH_C5R4 C
-#define KEY_LH_C4R4 I
-#define KEY_LH_C3R4 E
-#define KEY_LH_C2R4 A
-#define KEY_LH_C1R4 COMMA
-#define KEY_RH_C1R4 DOT
-#define KEY_RH_C2R4 H
-#define KEY_RH_C3R4 T
-#define KEY_RH_C4R4 S
-#define KEY_RH_C5R4 N
-#define KEY_RH_C6R4 Q
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 G
-#define KEY_LH_C4R5 X
-#define KEY_LH_C3R5 J
-#define KEY_LH_C2R5 K
-#define KEY_LH_C1R5 MINUS
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 QMARK
-#define KEY_RH_C2R5 R
-#define KEY_RH_C3R5 M
-#define KEY_RH_C4R5 F
-#define KEY_RH_C5R5 P
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 HASH
-#define KEY_RH_C4R6 FSLH
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Dvorak) && LAYER_Dvorak == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 BSLH
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 SQT
-#define KEY_LH_C4R3 COMMA
-#define KEY_LH_C3R3 DOT
-#define KEY_LH_C2R3 P
-#define KEY_LH_C1R3 Y
-#define KEY_RH_C1R3 F
-#define KEY_RH_C2R3 G
-#define KEY_RH_C3R3 C
-#define KEY_RH_C4R3 R
-#define KEY_RH_C5R3 L
-#define KEY_RH_C6R3 SLASH
-#define KEY_LH_C6R4 CAPS
-#define KEY_LH_C5R4 A
-#define KEY_LH_C4R4 O
-#define KEY_LH_C3R4 E
-#define KEY_LH_C2R4 U
-#define KEY_LH_C1R4 I
-#define KEY_RH_C1R4 D
-#define KEY_RH_C2R4 H
-#define KEY_RH_C3R4 T
-#define KEY_RH_C4R4 N
-#define KEY_RH_C5R4 S
-#define KEY_RH_C6R4 MINUS
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 SEMI
-#define KEY_LH_C4R5 Q
-#define KEY_LH_C3R5 J
-#define KEY_LH_C2R5 K
-#define KEY_LH_C1R5 X
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 B
-#define KEY_RH_C2R5 M
-#define KEY_RH_C3R5 W
-#define KEY_RH_C4R5 V
-#define KEY_RH_C5R5 Z
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Colemak) && LAYER_Colemak == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 BSLH
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 Q
-#define KEY_LH_C4R3 W
-#define KEY_LH_C3R3 F
-#define KEY_LH_C2R3 P
-#define KEY_LH_C1R3 G
-#define KEY_RH_C1R3 J
-#define KEY_RH_C2R3 L
-#define KEY_RH_C3R3 U
-#define KEY_RH_C4R3 Y
-#define KEY_RH_C5R3 SEMI
-#define KEY_RH_C6R3 MINUS
-#define KEY_LH_C6R4 0
-#define KEY_LH_C5R4 A
-#define KEY_LH_C4R4 R
-#define KEY_LH_C3R4 S
-#define KEY_LH_C2R4 T
-#define KEY_LH_C1R4 D
-#define KEY_RH_C1R4 H
-#define KEY_RH_C2R4 N
-#define KEY_RH_C3R4 E
-#define KEY_RH_C4R4 I
-#define KEY_RH_C5R4 O
-#define KEY_RH_C6R4 SQT
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 Z
-#define KEY_LH_C4R5 X
-#define KEY_LH_C3R5 C
-#define KEY_LH_C2R5 V
-#define KEY_LH_C1R5 B
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 K
-#define KEY_RH_C2R5 M
-#define KEY_RH_C3R5 COMMA
-#define KEY_RH_C4R5 DOT
-#define KEY_RH_C5R5 FSLH
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
 #if defined(LAYER_QWERTY) && LAYER_QWERTY == 0
 #define KEY_LH_C6R1 UP
 #define KEY_LH_C5R1 DOWN
@@ -557,7 +253,7 @@
 #define KEY_RH_C4R2 N9
 #define KEY_RH_C5R2 N0
 #define KEY_RH_C6R2 MINUS
-#define KEY_LH_C6R3 GRAVE
+#define KEY_LH_C6R3 RA(NON_US_BSLH)
 #define KEY_LH_C5R3 Q
 #define KEY_LH_C4R3 W
 #define KEY_LH_C3R3 E
@@ -568,7 +264,7 @@
 #define KEY_RH_C3R3 I
 #define KEY_RH_C4R3 O
 #define KEY_RH_C5R3 P
-#define KEY_RH_C6R3 BSLH
+#define KEY_RH_C6R3 LBKT
 #define KEY_LH_C6R4 CAPS
 #define KEY_LH_C5R4 A
 #define KEY_LH_C4R4 S
@@ -611,418 +307,8 @@
 #define KEY_RH_T5 TAB
 #define KEY_RH_T4 SPACE
 #define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_ColemakDH) && LAYER_ColemakDH == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 MINUS
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 Q
-#define KEY_LH_C4R3 W
-#define KEY_LH_C3R3 F
-#define KEY_LH_C2R3 P
-#define KEY_LH_C1R3 B
-#define KEY_RH_C1R3 J
-#define KEY_RH_C2R3 L
-#define KEY_RH_C3R3 U
-#define KEY_RH_C4R3 Y
-#define KEY_RH_C5R3 SEMI
-#define KEY_RH_C6R3 BSLH
-#define KEY_LH_C6R4 CAPS
-#define KEY_LH_C5R4 A
-#define KEY_LH_C4R4 R
-#define KEY_LH_C3R4 S
-#define KEY_LH_C2R4 T
-#define KEY_LH_C1R4 G
-#define KEY_RH_C1R4 M
-#define KEY_RH_C2R4 N
-#define KEY_RH_C3R4 E
-#define KEY_RH_C4R4 I
-#define KEY_RH_C5R4 O
-#define KEY_RH_C6R4 SQT
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 Z
-#define KEY_LH_C4R5 X
-#define KEY_LH_C3R5 C
-#define KEY_LH_C2R5 D
-#define KEY_LH_C1R5 V
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 K
-#define KEY_RH_C2R5 H
-#define KEY_RH_C3R5 COMMA
-#define KEY_RH_C4R5 DOT
-#define KEY_RH_C5R5 FSLH
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Canary) && LAYER_Canary == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 MINUS
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 W
-#define KEY_LH_C4R3 L
-#define KEY_LH_C3R3 Y
-#define KEY_LH_C2R3 P
-#define KEY_LH_C1R3 B
-#define KEY_RH_C1R3 Z
-#define KEY_RH_C2R3 F
-#define KEY_RH_C3R3 O
-#define KEY_RH_C4R3 U
-#define KEY_RH_C5R3 SQT
-#define KEY_RH_C6R3 BSLH
-#define KEY_LH_C6R4 CAPS
-#define KEY_LH_C5R4 C
-#define KEY_LH_C4R4 R
-#define KEY_LH_C3R4 S
-#define KEY_LH_C2R4 T
-#define KEY_LH_C1R4 G
-#define KEY_RH_C1R4 M
-#define KEY_RH_C2R4 N
-#define KEY_RH_C3R4 E
-#define KEY_RH_C4R4 I
-#define KEY_RH_C5R4 A
-#define KEY_RH_C6R4 SEMI
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 Q
-#define KEY_LH_C4R5 J
-#define KEY_LH_C3R5 V
-#define KEY_LH_C2R5 D
-#define KEY_LH_C1R5 K
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 X
-#define KEY_RH_C2R5 H
-#define KEY_RH_C3R5 FSLH
-#define KEY_RH_C4R5 COMMA
-#define KEY_RH_C5R5 DOT
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Sturdy) && LAYER_Sturdy == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 MINUS
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 V
-#define KEY_LH_C4R3 M
-#define KEY_LH_C3R3 L
-#define KEY_LH_C2R3 C
-#define KEY_LH_C1R3 P
-#define KEY_RH_C1R3 X
-#define KEY_RH_C2R3 F
-#define KEY_RH_C3R3 O
-#define KEY_RH_C4R3 U
-#define KEY_RH_C5R3 J
-#define KEY_RH_C6R3 BSLH
-#define KEY_LH_C6R4 CAPS
-#define KEY_LH_C5R4 S
-#define KEY_LH_C4R4 T
-#define KEY_LH_C3R4 R
-#define KEY_LH_C2R4 D
-#define KEY_LH_C1R4 Y
-#define KEY_RH_C1R4 DOT
-#define KEY_RH_C2R4 N
-#define KEY_RH_C3R4 A
-#define KEY_RH_C4R4 E
-#define KEY_RH_C5R4 I
-#define KEY_RH_C6R4 FSLH
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 Z
-#define KEY_LH_C4R5 K
-#define KEY_LH_C3R5 Q
-#define KEY_LH_C2R5 G
-#define KEY_LH_C1R5 W
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 B
-#define KEY_RH_C2R5 H
-#define KEY_RH_C3R5 SQT
-#define KEY_RH_C4R5 SEMI
-#define KEY_RH_C5R5 COMMA
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Graphite) && LAYER_Graphite == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 BSLH
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 B
-#define KEY_LH_C4R3 L
-#define KEY_LH_C3R3 D
-#define KEY_LH_C2R3 W
-#define KEY_LH_C1R3 Z
-#define KEY_RH_C1R3 SQT
-#define KEY_RH_C2R3 F
-#define KEY_RH_C3R3 O
-#define KEY_RH_C4R3 U
-#define KEY_RH_C5R3 J
-#define KEY_RH_C6R3 SEMI
-#define KEY_LH_C6R4 CAPS
-#define KEY_LH_C5R4 N
-#define KEY_LH_C4R4 R
-#define KEY_LH_C3R4 T
-#define KEY_LH_C2R4 S
-#define KEY_LH_C1R4 G
-#define KEY_RH_C1R4 Y
-#define KEY_RH_C2R4 H
-#define KEY_RH_C3R4 A
-#define KEY_RH_C4R4 E
-#define KEY_RH_C5R4 I
-#define KEY_RH_C6R4 COMMA
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 Q
-#define KEY_LH_C4R5 X
-#define KEY_LH_C3R5 M
-#define KEY_LH_C2R5 C
-#define KEY_LH_C1R5 V
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 K
-#define KEY_RH_C2R5 P
-#define KEY_RH_C3R5 DOT
-#define KEY_RH_C4R5 MINUS
-#define KEY_RH_C5R5 FSLH
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
-#define KEY_RH_C5R6 RPAR
-#define KEY_RH_C6R6 0
-#endif
-#if defined(LAYER_Gallium) && LAYER_Gallium == 0
-#define KEY_LH_C6R1 UP
-#define KEY_LH_C5R1 DOWN
-#define KEY_LH_C4R1 A
-#define KEY_LH_C3R1 B
-#define KEY_LH_C2R1 C
-#define KEY_RH_C2R1 D
-#define KEY_RH_C3R1 E
-#define KEY_RH_C4R1 F
-#define KEY_RH_C5R1 LEFT
-#define KEY_RH_C6R1 RIGHT
-#define KEY_LH_C6R2 EQUAL
-#define KEY_LH_C5R2 N1
-#define KEY_LH_C4R2 N2
-#define KEY_LH_C3R2 N3
-#define KEY_LH_C2R2 N4
-#define KEY_LH_C1R2 N5
-#define KEY_RH_C1R2 N6
-#define KEY_RH_C2R2 N7
-#define KEY_RH_C3R2 N8
-#define KEY_RH_C4R2 N9
-#define KEY_RH_C5R2 N0
-#define KEY_RH_C6R2 MINUS
-#define KEY_LH_C6R3 GRAVE
-#define KEY_LH_C5R3 B
-#define KEY_LH_C4R3 L
-#define KEY_LH_C3R3 D
-#define KEY_LH_C2R3 C
-#define KEY_LH_C1R3 V
-#define KEY_RH_C1R3 J
-#define KEY_RH_C2R3 Y
-#define KEY_RH_C3R3 O
-#define KEY_RH_C4R3 U
-#define KEY_RH_C5R3 COMMA
-#define KEY_RH_C6R3 BSLH
-#define KEY_LH_C6R4 CAPS
-#define KEY_LH_C5R4 N
-#define KEY_LH_C4R4 R
-#define KEY_LH_C3R4 T
-#define KEY_LH_C2R4 S
-#define KEY_LH_C1R4 G
-#define KEY_RH_C1R4 P
-#define KEY_RH_C2R4 H
-#define KEY_RH_C3R4 A
-#define KEY_RH_C4R4 E
-#define KEY_RH_C5R4 I
-#define KEY_RH_C6R4 FSLH
-#define KEY_LH_C6R5 LSFT
-#define KEY_LH_C5R5 X
-#define KEY_LH_C4R5 Q
-#define KEY_LH_C3R5 M
-#define KEY_LH_C2R5 W
-#define KEY_LH_C1R5 Z
-#define KEY_LH_T1 ESC
-#define KEY_LH_T2 LSFT
-#define KEY_LH_T3 0
-#define KEY_RH_T3 0
-#define KEY_RH_T2 RSFT
-#define KEY_RH_T1 ENTER
-#define KEY_RH_C1R5 K
-#define KEY_RH_C2R5 F
-#define KEY_RH_C3R5 SQT
-#define KEY_RH_C4R5 SEMI
-#define KEY_RH_C5R5 DOT
-#define KEY_RH_C6R5 RSFT
-#define KEY_LH_C6R6 0
-#define KEY_LH_C5R6 HOME
-#define KEY_LH_C4R6 PG_UP
-#define KEY_LH_C3R6 PG_DN
-#define KEY_LH_C2R6 END
-#define KEY_LH_T4 BACKSPACE
-#define KEY_LH_T5 DELETE
-#define KEY_LH_T6 0
-#define KEY_RH_T6 0
-#define KEY_RH_T5 TAB
-#define KEY_RH_T4 SPACE
-#define KEY_RH_C2R6 LPAR
-#define KEY_RH_C3R6 LBKT
-#define KEY_RH_C4R6 RBKT
+#define KEY_RH_C3R6 RA(N8)
+#define KEY_RH_C4R6 RA(N9)
 #define KEY_RH_C5R6 RPAR
 #define KEY_RH_C6R6 0
 #endif
@@ -1051,7 +337,7 @@ combos {
     timeout-ms = <COMBO_FIRING_DECAY>;
     key-positions = <POS_LH_T4 POS_LH_T1>;
     bindings = <&mod_tab_chord _A_TAB LAYER_Cursor>;
-    layers = <0 1 2 3 4 5 6 7 8 9 10>;
+    layers = <0>;
   };
   #endif
 
@@ -1059,7 +345,7 @@ combos {
     timeout-ms = <COMBO_FIRING_DECAY>;
     key-positions = <POS_LH_T4 POS_LH_T5>;
     bindings = <&mod_tab_chord LCTL LAYER_Cursor>;
-    layers = <0 1 2 3 4 5 6 7 8 9 10>;
+    layers = <0>;
   };
   #endif
 
@@ -1067,41 +353,71 @@ combos {
     timeout-ms = <COMBO_FIRING_DECAY>;
     key-positions = <POS_RH_T1 POS_RH_T4>;
     bindings = <&sk LG(LA(LC(LSHFT)))>;
-    layers = <0 1 2 3 4 5 6 7 8 9 10>;
+    layers = <0>;
   };
 
   combo_sticky_meh_right {
     timeout-ms = <COMBO_FIRING_DECAY>;
     key-positions = <POS_RH_T4 POS_RH_T5>;
     bindings = <&sk LA(LC(LSHFT))>;
-    layers = <0 1 2 3 4 5 6 7 8 9 10>;
+    layers = <0>;
   };
 
   combo_sticky_AltGr_left {
     timeout-ms = <COMBO_FIRING_DECAY>;
     key-positions = <POS_LH_T2 POS_LH_T5>;
     bindings = <&sk RALT>;
-    layers = <0 1 2 3 4 5 6 7 8 9 10>;
+    layers = <0>;
   };
 
   combo_sticky_AltGr_right {
     timeout-ms = <COMBO_FIRING_DECAY>;
     key-positions = <POS_RH_T2 POS_RH_T5>;
     bindings = <&sk RALT>;
-    layers = <0 1 2 3 4 5 6 7 8 9 10>;
+    layers = <0>;
   };
 
   combo_caps_lock {
     timeout-ms = <COMBO_FIRING_DECAY>;
     key-positions = <POS_LH_T6 POS_RH_T6>;
     bindings = <&kp CAPSLOCK>;
-    layers = <0 1 2 3 4 5 6 7 8 9 10>;
+    layers = <0>;
   };
 
 };
 
 behaviors {
 
+    // CUSTOM -- BEHAVIORS HELTO
+    ////////////////////////////////////////////////////////////////////////////////
+
+    // Windows sleep key
+    win_sleep: win_sleep {
+        wait-ms = <100>;
+        tap-ms = <5>;
+        compatible = "zmk,behavior-macro";
+        label = "WIN_SLEEP_KEY";
+        #binding-cells = <0>;
+        bindings = <&kp LG(X) &kp N &kp SV_OE>;
+    };
+
+    // Email address
+    email: email {
+        compatible = "zmk,behavior-macro";
+        label = "EMAIL";
+        #binding-cells = <0>;
+        bindings = <
+            &kp T &kp O &kp M &kp A &kp S
+            &kp _DOT
+            &kp H &kp E &kp L &kp L &kp S &kp T &kp R &kp O &kp M
+                &kp _AT
+                &kp Y &kp A &kp H &kp O &kp O
+                &kp _DOT
+                &kp S &kp E
+            >;
+    };
+
+    ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////
   //
   // Miryoku layers and home row mods (ported from my QMK endgame)
@@ -1807,16 +1123,6 @@ behaviors {
   #define left_pinky_layer0_variant left_pinky
   #endif
   #define LeftPinky_layer0(key) left_pinky_layer0_variant LEFT_PINKY_MOD key
-  #define LeftPinky_layer1(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer2(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer3(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer4(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer5(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer6(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer7(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer8(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer9(key) left_pinky LEFT_PINKY_MOD key
-  #define LeftPinky_layer10(key) left_pinky LEFT_PINKY_MOD key
   #ifndef RIGHT_PINKY_HOLDING_TYPE
   #define RIGHT_PINKY_HOLDING_TYPE PINKY_HOLDING_TYPE
   #endif
@@ -1907,16 +1213,6 @@ behaviors {
   #define right_pinky_layer0_variant right_pinky
   #endif
   #define RightPinky_layer0(key) right_pinky_layer0_variant RIGHT_PINKY_MOD key
-  #define RightPinky_layer1(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer2(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer3(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer4(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer5(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer6(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer7(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer8(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer9(key) right_pinky RIGHT_PINKY_MOD key
-  #define RightPinky_layer10(key) right_pinky RIGHT_PINKY_MOD key
   #ifndef LEFT_RINGY_HOLDING_TYPE
   #define LEFT_RINGY_HOLDING_TYPE RINGY_HOLDING_TYPE
   #endif
@@ -2007,16 +1303,6 @@ behaviors {
   #define left_ringy_layer0_variant left_ringy
   #endif
   #define LeftRingy_layer0(key) left_ringy_layer0_variant LEFT_RINGY_MOD key
-  #define LeftRingy_layer1(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer2(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer3(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer4(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer5(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer6(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer7(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer8(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer9(key) left_ringy LEFT_RINGY_MOD key
-  #define LeftRingy_layer10(key) left_ringy LEFT_RINGY_MOD key
   #ifndef RIGHT_RINGY_HOLDING_TYPE
   #define RIGHT_RINGY_HOLDING_TYPE RINGY_HOLDING_TYPE
   #endif
@@ -2107,16 +1393,6 @@ behaviors {
   #define right_ringy_layer0_variant right_ringy
   #endif
   #define RightRingy_layer0(key) right_ringy_layer0_variant RIGHT_RINGY_MOD key
-  #define RightRingy_layer1(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer2(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer3(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer4(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer5(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer6(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer7(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer8(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer9(key) right_ringy RIGHT_RINGY_MOD key
-  #define RightRingy_layer10(key) right_ringy RIGHT_RINGY_MOD key
   #ifndef LEFT_MIDDY_HOLDING_TYPE
   #define LEFT_MIDDY_HOLDING_TYPE MIDDY_HOLDING_TYPE
   #endif
@@ -2207,16 +1483,6 @@ behaviors {
   #define left_middy_layer0_variant left_middy
   #endif
   #define LeftMiddy_layer0(key) left_middy_layer0_variant LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer1(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer2(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer3(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer4(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer5(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer6(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer7(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer8(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer9(key) left_middy LEFT_MIDDY_MOD key
-  #define LeftMiddy_layer10(key) left_middy LEFT_MIDDY_MOD key
   #ifndef RIGHT_MIDDY_HOLDING_TYPE
   #define RIGHT_MIDDY_HOLDING_TYPE MIDDY_HOLDING_TYPE
   #endif
@@ -2307,16 +1573,6 @@ behaviors {
   #define right_middy_layer0_variant right_middy
   #endif
   #define RightMiddy_layer0(key) right_middy_layer0_variant RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer1(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer2(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer3(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer4(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer5(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer6(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer7(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer8(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer9(key) right_middy RIGHT_MIDDY_MOD key
-  #define RightMiddy_layer10(key) right_middy RIGHT_MIDDY_MOD key
   #ifndef LEFT_INDEX_HOLDING_TYPE
   #define LEFT_INDEX_HOLDING_TYPE INDEX_HOLDING_TYPE
   #endif
@@ -2407,16 +1663,6 @@ behaviors {
   #define left_index_layer0_variant left_index
   #endif
   #define LeftIndex_layer0(key) left_index_layer0_variant LEFT_INDEX_MOD key
-  #define LeftIndex_layer1(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer2(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer3(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer4(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer5(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer6(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer7(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer8(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer9(key) left_index LEFT_INDEX_MOD key
-  #define LeftIndex_layer10(key) left_index LEFT_INDEX_MOD key
   #ifndef RIGHT_INDEX_HOLDING_TYPE
   #define RIGHT_INDEX_HOLDING_TYPE INDEX_HOLDING_TYPE
   #endif
@@ -2507,16 +1753,6 @@ behaviors {
   #define right_index_layer0_variant right_index
   #endif
   #define RightIndex_layer0(key) right_index_layer0_variant RIGHT_INDEX_MOD key
-  #define RightIndex_layer1(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer2(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer3(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer4(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer5(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer6(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer7(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer8(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer9(key) right_index RIGHT_INDEX_MOD key
-  #define RightIndex_layer10(key) right_index RIGHT_INDEX_MOD key
   #ifndef LEFT_RINGY_PINKY_HOLDING_TYPE
   #define LEFT_RINGY_PINKY_HOLDING_TYPE LEFT_RINGY_CHORD_HOLDING_TYPE
   #endif
@@ -3806,6 +3042,52 @@ macros {
     bindings = <&kp LS(UP) &kp LS(_HOME)>;
   )
 
+    // CUSTOM -- UNDEAD CHARACTERS HELTO
+    ////////////////////////////////////////////////////////////////////////////////
+
+    // convert dead keys to their living counterparts when needed
+    #define UNDEAD(name, ...) \
+        ZMK_MACRO(name, \
+            wait-ms = <1>; \
+            tap-ms = <1>; \
+            bindings = __VA_ARGS__; \
+        )
+
+    #define UNDEAD_SEQ_BASE(keystrokes) \
+        <&macro_tap &kp keystrokes>
+
+    #define UNDEAD_SEQ_DEAD(keystrokes) \
+        <&macro_tap &kp keystrokes &kp SPACE>
+
+    UNDEAD(base_tilde,
+        #if defined(_TILDE)
+          UNDEAD_SEQ_BASE(_TILDE)
+        #elif defined(DEAD_TILDE)
+          UNDEAD_SEQ_DEAD(DEAD_TILDE)
+        #endif
+    )
+    UNDEAD(base_caret,
+        #if defined(_CARET)
+          UNDEAD_SEQ_BASE(_CARET)
+        #elif defined(DEAD_CARET)
+          UNDEAD_SEQ_DEAD(DEAD_CARET)
+        #endif
+    )
+    UNDEAD(base_grave,
+        #if defined(_GRAVE)
+          UNDEAD_SEQ_BASE(_GRAVE)
+        #elif defined(DEAD_GRAVE)
+          UNDEAD_SEQ_DEAD(DEAD_GRAVE)
+        #endif
+    )
+    UNDEAD(base_acute,
+        #if defined(_ACUTE)
+          UNDEAD_SEQ_BASE(_ACUTE)
+        #elif defined(DEAD_ACUTE)
+          UNDEAD_SEQ_DEAD(DEAD_ACUTE)
+        #endif
+    )
+    ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////
   //
   // World layer - international characters

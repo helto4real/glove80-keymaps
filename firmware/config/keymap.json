@@ -3,8 +3,8 @@
   "firmware_api_version": "1",
   "locale": "sv-SE",
   "uuid": "",
-  "parent_uuid": "8ce412b1-7b6e-4124-8ac8-4899acc390e5",
-  "date": 1735845505,
+  "parent_uuid": "2498e1ff-3cdd-4c8b-a9f1-e17cf94664a0",
+  "date": 1735926321,
   "creator": "helto4real",
   "title": "Glorious Engrammer v40 test2",
   "notes": "Sunaku's Keymap v40 for the \"Glorious Engrammer\" 🧑‍🚀🚀✨\n- Intro & setup: https://github.com/sunaku/glove80-keymaps\n- Release notes: https://github.com/sunaku/glove80-keymaps/releases/tag/v40\n- Documentation: https://sunaku.github.io/moergo-glove80-keyboard.html#layers\n- Discord forum: #glorious-engrammer channel in https://www.moergo.com/discord\n\n=== SUMMARY ===\n\nThis release refines the [Enthium alpha layout]( https://github.com/sunaku/enthium ), adds support for AZERTY and similar locales, simplifies key repetition and one-shot sticky shift, revamps the Gaming layer, adds options for thumb layer access key forgiveness, modernizes the alpha layout selection, standardizes a common thumb cluster and function row design across all alpha layouts, reduces the DTSI snippet size by 20KB, and much more!\n\n=== CHANGES ===\n\nConfig:\n- Add THUMB_FORGIVENESS setting to allow lingering taps on the thumb keys.\n- Add SPACE_FORGIVENESS setting to allow lingering taps on the space bar.\n- Add WORLD_HOST_AZERTY setting to support hosts using the AZERTY locale.\n- Add WORLD_SHIFT_DIGIT setting to apply Shift to type number row digits.\n- Add &select_all behavior to encapsulate the OS-specific _C(A) shortcut.\n\nAlphas:\n- Put hexadecimal digits A-F and arrow keys on function row to synchronize all alpha layers with the new Enthium base layer.\n- Swap minus and backslash in order to put minus next to 0 on the number row, just like the default Glove80 factory layout.\n- Replace CapsWord with CapsLock on the non-Engram layouts to increase familiarity with traditional row-staggered keyboards.\n- Rename ColemakDHm layer to ColemakDH, to better align with EnthiumRS -- the \"m\" (stands for modification) feels redundant.\n- Reposition QWERTY layer onto number 5 according to the README documentation and historical answers to questions on Discord.\n- Replace Norman layout with Gallium.\n- Replace Workman layout with Graphite.\n- Add Canary and Sturdy alpha layouts.\n- Enthium layout: swap Semicolon and Slash to cluster Slash+Period for Engrammer likeness and filesystem paths: `./` and `../`\n- Enthium layout: swap Q and Z to be more like Engram/mer because the one-handed QU roll was overworking my left pinky finger.\n- Enthium layout: restore v38 thumb cluster (right-hand space) and put R on satellite to allow outward swiping for \"r \" bigram.\n\nLayout:\n- Base layer: add combo on T2+T5 as a way to activate sticky AltGr (RALT) because the Ring2 modifier key has been removed.\n- Base layer: replace &plain behavior with Persist layer; move repetition access keys from inner column index fingers to T2.\n- Base layer: move Lower key from T6 to T3 (the furthest reachable key in the thumb cluster) like the Glove80 factory layout.\n- Base layer: move CapsWord to T6, put one-shot sticky shift on T2, and remove CapsLock (use the System layer for CapsLock).\n- Base layer: add CapsLock combo on T6+T6 as a way to issue a stronger variation of the CapsWord operation currently on T6.\n- Base layer: remove Shift combo on T4+index to avoid interfering with Cursor layer's Shift+LeftArrow text selection.  Thanks to @theearthhaha for reporting this issue in Discord at https://discord.com/channels/877392805654306816/1193051200938049546/1292445298118885439\n- Base layer: remove CapsWord combo on T1+index because it can interfere with Function layer's Shift+Fn shortcuts.\n\n- Emoji layer: move cityscape to T5, cityscape_dusk to T1, cityscape_night to T2 (in response to moving the Lower key to T3).\n\n- Cursor layer: move Tab from T3 to T6 (in response to moving the Lower key to T3).\n\n- Number layer: swap angle brackets and square brackets to put angle brackets back on the thumb cluster (like release v38).\n- Number layer: upgrade parentheses on inner satellite keys into &parang for consistency, so that they can be used with Shift.\n- Number layer: swap the pipe and AT sign to provide easier access to the latter as a suffix and demote the infrequent former.\n\n- Function layer: move play/pause to T3 for consistency with volume controls and to also reflect comma+period on Number layer.\n\n- System layer: put ScrollLock on T4, NumLock on T5, CapsLock on T6 on the left hand; do the same on right hand's upper row.\n- System layer: stack PauseBreak, PrintScreen, ContextMenu vertically similar to the Cut/Copy/Paste stack on Cursor layer.\n- System layer: reorganize RGB toggle and effect cycling keys on the right hand's lower row; also the toggle on left hand.\n\n- Symbol layer: move curly braces inward from pinky/index to ring/middle fingers for frequent paragraph jumping usage in Vim.\n- Symbol layer: move semicolon down by a row for a more natural `();` where the index finger rests below ring/middle fingers.\n- Symbol layer: replace semicolon on thumb cluster with AT for inward swiping `@:` in Vim to repeat the most recent command-line.\n- Symbol layer: move quotes to inner satellite keys now that square brackets have moved up to the number row into grouping cluster.\n- Symbol layer: put double quotes on middle finger (which is longer and feels easier to reach down) and apostrophe on ring finger.\n- Symbol layer: replace AT sign in bottom left corner with backtick for proximity with quotation marks on inner satellite keys.\n- Symbol layer: move backtick to its traditional location to cluster with square brackets for Vim paste boundary marker jumping.\n- Symbol layer: move home row mods up to the number row and make them sticky so that you don't need to hold them down to use them.\n- Symbol layer: add cursor movement, text selection, undo/redo, and quotation marks to right hand (around the spacegram operators).\n\n- Mouse layer: move wheel up/down keys to pinky for simultaneous use with pointer movement on the middle, ring, and index fingers.\n- Mouse layer: add sticky modifier keys on the number row of the right hand, for consistency with its neighboring thumb layers.\n\n- Gaming layer: fix &trans for function and number rows, since the base layer no longer provides the traditional key arrangement.\n- Gaming layer: move left hand's 1-5 number row down to be closer to WASD and put 6-0 on the original 1-5 number row's placement.\n- Gaming layer: add M (for map) and I (for inventory) along upper left edge of left hand (and similarly full 0-9 numbers) for RPG.\n- Gaming layer: move Escape and Enter to the corners of the function row; also add Backspace, P (for pause), and O (for options).\n- Gaming layer: add frequently used comma and period on upper left corner, comma and minus on upper right corner, tilde in middle.\n- Gaming layer: add Shift and Ctrl on left hand thumb cluster for players who wish to avoid overburdening their left pinky finger.\n- Gaming layer: use traditional QWERTY for right half (don't right-shift it anymore); add F11/F12 and punctuation on the fringes.\n- Gaming layer: move function keys to the right half arranged with F1-F1 on function row, F6-F10 on 6-0 number row, and F11/F12.\n- Gaming layer: add standard \"inverted T\" arrow keys along with Escape/Enter on right thumb cluster for navigating through menus.\n\n=== THANKS ===\n\nThanks to @bravekarma @Chris @gillesa @goneinsane_ @gontranb. @guymcawesome @kevinloweyt @mateopanadero @moosyresearch @nullptr.pro @pacothesage @sebsnadu @sswiftlink @theearthhaha @tylerlaprade on Discord and this wonderful community!",
@@ -5912,19 +5912,19 @@
         ]
       },
       {
-        "value": "&kp",
+        "value": "Custom",
         "params": [
           {
-            "value": "TILDE",
+            "value": "&base_tilde",
             "params": []
           }
         ]
       },
       {
-        "value": "&kp",
+        "value": "Custom",
         "params": [
           {
-            "value": "CARET",
+            "value": "&base_caret",
             "params": []
           }
         ]
@@ -5942,8 +5942,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "DLLR",
-            "params": []
+            "value": "RA",
+            "params": [
+              {
+                "value": "N4",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -5960,8 +5965,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "AT",
-            "params": []
+            "value": "RA",
+            "params": [
+              {
+                "value": "N2",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -6064,8 +6074,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "COLON",
-            "params": []
+            "value": "LS",
+            "params": [
+              {
+                "value": "DOT",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -6073,8 +6088,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "PRCNT",
-            "params": []
+            "value": "LS",
+            "params": [
+              {
+                "value": "N5",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -6169,19 +6189,19 @@
         ]
       },
       {
-        "value": "Custom",
+        "value": "&kp",
         "params": [
           {
-            "value": "&kp _KP_MINUS",
+            "value": "FSLH",
             "params": []
           }
         ]
       },
       {
-        "value": "Custom",
+        "value": "&kp",
         "params": [
           {
-            "value": "&kp _KP_PLUS",
+            "value": "MINUS",
             "params": []
           }
         ]
@@ -6321,20 +6341,30 @@
         ]
       },
       {
-        "value": "Custom",
+        "value": "&kp",
         "params": [
           {
-            "value": "&kp _KP_SLASH",
-            "params": []
+            "value": "LS",
+            "params": [
+              {
+                "value": "N7",
+                "params": []
+              }
+            ]
           }
         ]
       },
       {
-        "value": "Custom",
+        "value": "&kp",
         "params": [
           {
-            "value": "&kp _KP_ASTERISK",
-            "params": []
+            "value": "LS",
+            "params": [
+              {
+                "value": "BSLH",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -6467,8 +6497,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "PIPE",
-            "params": []
+            "value": "RA",
+            "params": [
+              {
+                "value": "NON_US_BSLH",
+                "params": []
+              }
+            ]
           }
         ]
       }
@@ -6495,8 +6530,13 @@
         "params": []
       },
       {
-        "value": "&none",
-        "params": []
+        "value": "&kp",
+        "params": [
+          {
+            "value": "K_REFRESH",
+            "params": []
+          }
+        ]
       },
       {
         "value": "&none",
@@ -6910,8 +6950,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "C_AL_FILES",
-            "params": []
+            "value": "RG",
+            "params": [
+              {
+                "value": "E",
+                "params": []
+              }
+            ]
           }
         ]
       },
