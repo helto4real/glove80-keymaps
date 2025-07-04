@@ -4,7 +4,7 @@
 # Usage: ./build_firmware.sh [branch]
 # Arguments:
 #   branch - Git branch to use (defaults to 'main')
-
+export DOCKER_BUILDKIT=1
 set -euo pipefail
 
 # Constants
