@@ -1030,7 +1030,7 @@
 #define KEY_RH_C4R4 L
 #define KEY_RH_C5R4 SEMI
 #define KEY_RH_C6R4 SQT
-#define KEY_LH_C6R5 0
+#define KEY_LH_C6R5 LSFT
 #define KEY_LH_C5R5 Z
 #define KEY_LH_C4R5 X
 #define KEY_LH_C3R5 C
@@ -1047,7 +1047,7 @@
 #define KEY_RH_C3R5 COMMA
 #define KEY_RH_C4R5 DOT
 #define KEY_RH_C5R5 FSLH
-#define KEY_RH_C6R5 0
+#define KEY_RH_C6R5 RSFT
 #define KEY_LH_C6R6 0
 #define KEY_LH_C5R6 HOME
 #define KEY_LH_C4R6 0
@@ -10819,12 +10819,12 @@ UNICODE_MORPH_MODS
 
         layer_QWERTY {
             bindings = <
-               &kp F1                        &kp F2                        &kp F3                        &kp F4                        &kp F5                                                                                                                                                                                                               &kp F6                         &kp F7                         &kp F8                            &kp F9               &kp F10
-            &kp EQUAL                        &kp N1                        &kp N2                        &kp N3                        &kp N4  &kp N5                                                                                                                                                                        &kp N6                         &kp N7                         &kp N8                         &kp N9                            &kp N0               &kp F11
-  &kp RA(NON_US_BSLH)                         &kp Q                         &kp W                         &kp E                         &kp R   &kp T                                                                                                                                                                         &kp Y                          &kp U                          &kp I                          &kp O                             &kp P              &kp LBKT
-             &kp CAPS  &LeftPinky (A, LAYER_QWERTY)  &LeftRingy (S, LAYER_QWERTY)  &LeftMiddy (D, LAYER_QWERTY)  &LeftIndex (F, LAYER_QWERTY)   &kp G                                                                                                                                                                         &kp H  &RightIndex (J, LAYER_QWERTY)  &RightMiddy (K, LAYER_QWERTY)  &RightRingy (L, LAYER_QWERTY)  &RightPinky (SEMI, LAYER_QWERTY)               &kp SQT
-      &mo LAYER_Lower                         &kp Z                         &kp X                         &kp C                         &kp V   &kp B      &thumb LAYER_Function ESC                &parang_left          &thumb LAYER_Lower          &thumb LAYER_Lower                &kp _END  &thumb LAYER_System ENTER   &kp N                          &kp M                      &kp COMMA                        &kp DOT                          &kp FSLH       &mo LAYER_Lower
- &magic LAYER_Magic 0                      &kp HOME                 &bracket_left                &bracket_right        &thumb LAYER_Emoji END          &thumb LAYER_Cursor BACKSPACE  &thumb LAYER_Number DELETE  &thumb LAYER_Typing INSERT  &thumb LAYER_Typing DELETE  &thumb LAYER_Mouse TAB  &space LAYER_Symbol SPACE             &thumb LAYER_World PAGE_UP                   &msc SCRL_UP                 &msc SCRL_DOWN                         &kp PG_DN  &magic LAYER_Magic 0
+                       &kp F1                        &kp F2                        &kp F3                        &kp F4                        &kp F5                                                                                                                                                                                                               &kp F6                         &kp F7                         &kp F8                            &kp F9                       &kp F10
+                    &kp EQUAL                        &kp N1                        &kp N2                        &kp N3                        &kp N4  &kp N5                                                                                                                                                                        &kp N6                         &kp N7                         &kp N8                         &kp N9                            &kp N0                       &kp F11
+          &kp RA(NON_US_BSLH)                         &kp Q                         &kp W                         &kp E                         &kp R   &kp T                                                                                                                                                                         &kp Y                          &kp U                          &kp I                          &kp O                             &kp P                      &kp LBKT
+                     &kp CAPS  &LeftPinky (A, LAYER_QWERTY)  &LeftRingy (S, LAYER_QWERTY)  &LeftMiddy (D, LAYER_QWERTY)  &LeftIndex (F, LAYER_QWERTY)   &kp G                                                                                                                                                                         &kp H  &RightIndex (J, LAYER_QWERTY)  &RightMiddy (K, LAYER_QWERTY)  &RightRingy (L, LAYER_QWERTY)  &RightPinky (SEMI, LAYER_QWERTY)                       &kp SQT
+ &sticky_key_modtap LSFT LSFT                         &kp Z                         &kp X                         &kp C                         &kp V   &kp B      &thumb LAYER_Function ESC                &parang_left          &thumb LAYER_Lower          &thumb LAYER_Lower                &kp _END  &thumb LAYER_System ENTER   &kp N                          &kp M                      &kp COMMA                        &kp DOT                          &kp FSLH  &sticky_key_modtap RSFT RSFT
+         &magic LAYER_Magic 0                      &kp HOME                 &bracket_left                &bracket_right        &thumb LAYER_Emoji END          &thumb LAYER_Cursor BACKSPACE  &thumb LAYER_Number DELETE  &thumb LAYER_Typing INSERT  &thumb LAYER_Typing DELETE  &thumb LAYER_Mouse TAB  &space LAYER_Symbol SPACE             &thumb LAYER_World PAGE_UP                   &msc SCRL_UP                 &msc SCRL_DOWN                         &kp PG_DN          &magic LAYER_Magic 0
             >;
         };
 
@@ -11105,3 +11105,4 @@ UNICODE_MORPH_MODS
 
     };
 };
+

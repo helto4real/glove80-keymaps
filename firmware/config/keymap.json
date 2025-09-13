@@ -3,9 +3,9 @@
   "firmware_api_version": "1",
   "locale": "sv-SE",
   "uuid": "",
-  "parent_uuid": "4deb05ed-32cc-4458-acbc-4d8dbf91ab69",
+  "parent_uuid": "28c3b8e3-a93b-4c37-86b5-2c8f58d38321",
   "unlisted": false,
-  "date": 1757751221,
+  "date": 1757760053,
   "creator": "helto4real",
   "title": "Glorious Engrammer v42-rc5 (preview) Swedish",
   "notes": "Sunaku's Keymap v42-rc5 for the \"Glorious Engrammer\" 🧑‍🚀🚀✨\n- Intro & setup: https://github.com/sunaku/glove80-keymaps/tree/v42-rc5/#readme\n- Release notes: https://github.com/sunaku/glove80-keymaps/releases/tag/v42-rc5\n- Printable map: https://github.com/sunaku/glove80-keymaps/raw/v42-rc5/README/all-layer-diagrams.pdf\n- Documentation: https://sunaku.github.io/moergo-glove80-keyboard.html#layers\n- Discord forum: **#glorious-engrammer** channel in https://www.moergo.com/discord",
@@ -480,7 +480,7 @@
         "value": "Custom",
         "params": [
           {
-            "value": "&mo LAYER_Lower",
+            "value": "&sticky_key_modtap LSFT LSFT",
             "params": []
           }
         ]
@@ -633,7 +633,7 @@
         "value": "Custom",
         "params": [
           {
-            "value": "&mo LAYER_Lower",
+            "value": "&sticky_key_modtap RSFT RSFT",
             "params": []
           }
         ]
