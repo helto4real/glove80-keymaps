@@ -1,6 +1,6 @@
 # Swedish QWERTY modified version of the "Glorious Engrammer" keymap for MoErgo Glove80
 
-This is my Glove80 keymap forked from the awesome @sunaku work v40.
+This is my Glove80 keymap forked from the awesome @sunaku work v42 RC.
 
 
 See [Sunaku's original Githubpage](https://github.com/sunaku/glove80-keymaps) for details about the keybindings and other key information.
