@@ -74,7 +74,12 @@ file 'define.json' => ['keymap.dtsi.min', 'device.dtsi.min'] do |t|
     .gsub(/#define (\w+)/, '\1 =')
     .lines.inject({}) do |hash, line|
       setting = line[/\w+/]
-      value = eval(line) rescue nil
+      value =
+        begin
+          eval(line)
+        rescue Exception
+          warn "#{t.name}: skipped #{line.inspect}"
+        end
       hash[setting] = value if value
       hash
     end
@@ -88,25 +93,34 @@ end
 layers_pdf = 'README/all-layer-diagrams.pdf'
 task :pdf => layers_pdf
 
+  # base-layer-diagram-Enthium
   # base-layer-diagram-Engrammer
   # base-layer-diagram-Engram
-  # base-layer-diagram-template
-  # use the color #0fe587 for custom defined keys
+  # base-layer-diagram-Dvorak
+  # base-layer-diagram-Colemak
+#   base-layer-diagram-ColemakDH
+
 layers_pdf_sequence = %w[
   base-layer-diagram
   base-layer-diagram-QWERTY
-  lower-layer-diagram
-  magic-layer-diagram
+
   cursor-layer-diagram
   number-layer-diagram
   function-layer-diagram
-  emoji-layer-diagram
+
   symbol-layer-diagram
   mouse-layer-diagram
   system-layer-diagram
+
+  emoji-layer-diagram
   world-layer-diagram
-  typing-layer-diagram
+
   gaming-layer-diagram
+  typing-layer-diagram
+  repeat-layer-diagram
+
+  lower-layer-diagram
+  magic-layer-diagram
   factory-layer-diagram
 ]
 

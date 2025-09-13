@@ -37,7 +37,7 @@ check_prerequisites() {
 create_keymap() {
     log "Generating keymap file..."
     
-    sed -e '/\/\* Custom Device-tree \*\//,/\/\* Glove80 system behavior & macros \*\// {
+    sed -e '/\/\* Custom Device-tree \*\//,/\/\* System behavior and Macros \*\// {
         /\/\* Custom Device-tree \*\// {
             p
             r '"${SCRIPT_DIR}"'/device.dtsi

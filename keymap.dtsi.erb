@@ -2,17 +2,19 @@
 #define OPERATING_SYSTEM 'L' // choose 'L'inux, 'M'acOS, or 'W'indows
 #define DIFFICULTY_LEVEL  0  // 0:custom, 1:easy -> 5:hard (see below)
 #define ENFORCE_BILATERAL    // cancels single-handed home row mod+tap
-#define SPACE_FORGIVENESS    // allow lingering taps on the space bar
+//#define SPACE_FORGIVENESS  // allow lingering taps on the space bar
 //#define THUMB_FORGIVENESS  // allow lingering taps on the thumb keys
-//#define SHIFT_FORGIVENESS  // requires 24.08-beta1 or newer firmware
-#define WORLD_USE_COMPOSE    // use native Compose in place of Unicode
+//#define SHIFT_FORGIVENESS  // requires v24.08-beta or newer firmware
+//#define ENABLE_MOUSE_KEYS  // requires HID_POINTING override to "y"
+//#define NATURAL_SCROLLING  // supports "natural scrolling" in macOS
+//#define WORLD_USE_COMPOSE  // use native Compose in place of Unicode
 //#define WORLD_HOST_AZERTY  // host computer is set to AZERTY locale
 //#define WORLD_SHIFT_NUMBER // apply Shift to type number row digits
 // TIP: Add more setting overrides here instead of editing them below.
 <%= ERB.new(File.read('custom_defines.erb'), nil, nil, '_sub01').result(binding) %>
 //////////////////////////////////////////////////////////////////////////////
 //
-// Sunaku's Keymap v40 -- "Glorious Engrammer"
+// Sunaku's Keymap v42 -- "Glorious Engrammer"
 // - https://github.com/sunaku/glove80-keymaps
 //
 //////////////////////////////////////////////////////////////////////////////
@@ -62,22 +64,26 @@
   #define _C      LG
   #define _A_TAB  LGUI
   #define _G_TAB  LALT
-  #define _REDO   _C(LS(Z))
+  #define _REDO   LG(LS(Z))
   #define _POWER  K_POWER
-  #define _W      LA
-  #define _HOME   _C(LEFT)
-  #define _END    _C(RIGHT)
+  #define _WORD   LA
+  #define _HOME   LG(LEFT)
+  #define _END    LG(RIGHT)
   #define _EMOJI  LG(LC(SPACE))
+  #define _FILES  LS(LA(M))
+  #define _GLOBE  GLOBE
 #else
   #define _C      LC
   #define _A_TAB  LALT
   #define _G_TAB  LGUI
-  #define _REDO   _C(Y)
+  #define _REDO   LC(Y)
   #define _POWER  C_POWER
-  #define _W      _C
+  #define _WORD   LC
   #define _HOME   HOME
   #define _END    END
   #define _EMOJI  LG(DOT)
+  #define _FILES  LG(E)
+  #define _GLOBE  LGUI
 #endif
 #define _SLEEP      C_SLEEP
 #if OPERATING_SYSTEM == <%= OPERATING_SYSTEMS[:windows] %>
@@ -94,37 +100,6 @@
 #define _FIND       _C(F)
 #define _FIND_NEXT  _C(G)
 #define _FIND_PREV  _C(LS(G))
-
-//
-// USE_NUMPAD_KEYCODES puts `KP_*` keycodes into the Number layer.
-//
-<%
-  NUMPAD_KEYCODES = %w[
-    KP_N0 KP_N1 KP_N2 KP_N3 KP_N4 KP_N5 KP_N6 KP_N7 KP_N8 KP_N9
-    KP_PLUS     KP_MINUS
-    KP_ASTERISK KP_SLASH
-    KP_COMMA    KP_DOT
-    KP_EQUAL    KP_ENTER
-  ]
-  emit_numpad_keycodes = lambda do |strip_prefix|
-    NUMPAD_KEYCODES.each do |keycode|
-      normal_keycode = keycode.sub(/^KP_/, '')
-      target_keycode = strip_prefix ? normal_keycode : keycode
-%>
-#define _<%= keycode %> <%= target_keycode %>
-<%
-    end
-  end
-%>
-#ifdef USE_NUMPAD_KEYCODES
-<%
-  emit_numpad_keycodes.(false)
-%>
-#else
-<%
-  emit_numpad_keycodes.(true)
-%>
-#endif
 
 <%= ERB.new(File.read('custom_locales.erb'), nil, nil, '_sub01').result(binding) %>
 //
@@ -194,7 +169,10 @@
 combos {
   compatible = "zmk,combos";
   <%
-    alpha_layer_ids = (0...ALPHA_LAYERS_COUNT).to_a.join(" ")
+    typing_layer_ids = (0..ALPHA_LAYERS_COUNT).to_a.join(" ")
+
+    NORMAL_LAYERS_COUNT = keymap["layer_names"].find_index("Lower")
+    normal_layer_ids = (0..NORMAL_LAYERS_COUNT).to_a.join(" ")
   %>
 
   //
@@ -205,66 +183,172 @@ combos {
     emit_setting_ifndef.(:COMBO_FIRING_DECAY, 50)
   %>
 
+  // T2+T3
+
+  combo_sticky_globe_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T2 POS_LH_T3>;
+    bindings = <&sk _GLOBE>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  combo_sticky_globe_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T2 POS_RH_T3>;
+    bindings = <&sk _GLOBE>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // T1+T2
+
+  combo_sticky_ralt_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T1 POS_LH_T2>;
+    bindings = <&sk RALT>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  combo_sticky_ralt_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T1 POS_RH_T2>;
+    bindings = <&sk RALT>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // T2+T5
+
+  #if defined(_A_TAB) && defined(LAYER_Cursor)
+  combo_alt_tab_switcher_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T2 POS_LH_T5>;
+    bindings = <&mod_tab_chord _A_TAB LAYER_Cursor>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+  #endif
+
+  combo_hyper_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T2 POS_RH_T5>;
+    bindings = <&kp LG(LA(LC(LSHFT)))>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // T5+T6
+
+  #if defined(_G_TAB) && defined(LAYER_Cursor)
+  combo_win_tab_switcher_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T5 POS_LH_T6>;
+    bindings = <&mod_tab_chord _G_TAB LAYER_Cursor>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+  #endif
+
+  combo_ctrl_shift_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T5 POS_RH_T6>;
+    bindings = <&kp LC(LSHFT)>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // T3+T6
+
+  combo_ctrl_tab_switcher_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T3 POS_LH_T6>;
+    bindings = <&mod_tab_chord LCTL LAYER_Cursor>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  combo_meh_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T3 POS_RH_T6>;
+    bindings = <&kp LA(LC(LSHFT))>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // T1+T4
+
+  combo_sticky_shift_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T1 POS_LH_T4>;
+    bindings = <&sticky_key_modtap LSFT LSFT>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  combo_sticky_shift_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T1 POS_RH_T4>;
+    bindings = <&sticky_key_modtap RSFT RSFT>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // T4+T5
+
+  combo_caps_word_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T4 POS_LH_T5>;
+    bindings = <&caps_word>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  combo_caps_word_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T4 POS_RH_T5>;
+    bindings = <&caps_word>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // T1+T5
+
+  combo_caps_lock_left {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_LH_T1 POS_LH_T5>;
+    bindings = <&kp CAPSLOCK>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  combo_caps_lock_right {
+    timeout-ms = <COMBO_FIRING_DECAY>;
+    key-positions = <POS_RH_T1 POS_RH_T5>;
+    bindings = <&kp CAPSLOCK>;
+    layers = <<%= typing_layer_ids %>>;
+  };
+
+  // C1R5+C2R6
+
   #ifdef LAYER_Gaming
   combo_gaming_layer_toggle {
     timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_LH_T3 POS_LH_T6>;
+    key-positions = <POS_LH_C1R5 POS_LH_C2R6>;
     bindings = <&tog LAYER_Gaming>;
     layers = <0 LAYER_Gaming>;
   };
   #endif
 
-  #ifdef LAYER_Cursor
-  #ifdef _A_TAB
-  combo_alt_tab_switcher {
+  #ifdef LAYER_Typing
+  combo_typing_layer_toggle {
     timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_LH_T4 POS_LH_T1>;
-    bindings = <&mod_tab_chord _A_TAB LAYER_Cursor>;
-    layers = <<%= alpha_layer_ids %>>;
+    key-positions = <POS_RH_C1R5 POS_RH_C2R6>;
+    bindings = <&tog LAYER_Typing>;
+    layers = <0 LAYER_Typing>;
   };
   #endif
 
-  combo_ctrl_tab_switcher {
-    timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_LH_T4 POS_LH_T5>;
-    bindings = <&mod_tab_chord LCTL LAYER_Cursor>;
-    layers = <<%= alpha_layer_ids %>>;
-  };
-  #endif
+  // T1+T2+T3
 
-  combo_sticky_hyper_right {
+  combo_sticky_base_layer_reset_left {
     timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_RH_T1 POS_RH_T4>;
-    bindings = <&sk LG(LA(LC(LSHFT)))>;
-    layers = <<%= alpha_layer_ids %>>;
+    key-positions = <POS_LH_T1 POS_LH_T2 POS_LH_T3>;
+    bindings = <&to 0>;
+    layers = <<%= normal_layer_ids %>>;
   };
 
-  combo_sticky_meh_right {
+  combo_sticky_base_layer_reset_right {
     timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_RH_T4 POS_RH_T5>;
-    bindings = <&sk LA(LC(LSHFT))>;
-    layers = <<%= alpha_layer_ids %>>;
-  };
-
-  combo_sticky_AltGr_left {
-    timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_LH_T2 POS_LH_T5>;
-    bindings = <&sk RALT>;
-    layers = <<%= alpha_layer_ids %>>;
-  };
-
-  combo_sticky_AltGr_right {
-    timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_RH_T2 POS_RH_T5>;
-    bindings = <&sk RALT>;
-    layers = <<%= alpha_layer_ids %>>;
-  };
-
-  combo_caps_lock {
-    timeout-ms = <COMBO_FIRING_DECAY>;
-    key-positions = <POS_LH_T6 POS_RH_T6>;
-    bindings = <&kp CAPSLOCK>;
-    layers = <<%= alpha_layer_ids %>>;
+    key-positions = <POS_RH_T1 POS_RH_T2 POS_RH_T3>;
+    bindings = <&to 0>;
+    layers = <<%= normal_layer_ids %>>;
   };
 
 };
@@ -454,10 +538,10 @@ behaviors {
   <%
     emit_setting_ifndef.(:HOMEY_HOLDING_TIME, resolve_tap_timing.(240))
 
-    INDEX_HOLDING_TIME = TAPPING_RESOLUTION + 20 # 170ms
-    MIDDY_HOLDING_TIME = INDEX_HOLDING_TIME + 40 # 210ms
+    INDEX_HOLDING_TIME = TAPPING_RESOLUTION + 40 # 190ms
+    MIDDY_HOLDING_TIME = INDEX_HOLDING_TIME + 20 # 210ms
     RINGY_HOLDING_TIME = MIDDY_HOLDING_TIME + 30 # 240ms
-    PINKY_HOLDING_TIME = RINGY_HOLDING_TIME + 20 # 260ms
+    PINKY_HOLDING_TIME = RINGY_HOLDING_TIME + 40 # 270ms
 
     emit_setting_ifndef.(:INDEX_HOLDING_TIME, resolve_tap_timing.(INDEX_HOLDING_TIME))
     emit_setting_ifndef.(:MIDDY_HOLDING_TIME, resolve_tap_timing.(MIDDY_HOLDING_TIME))
@@ -537,7 +621,7 @@ behaviors {
   // unintended activation of home row mods when you're actively typing.
   //
   <%
-    emit_setting_ifndef.(:INDEX_STREAK_DECAY, resolve_tap_timing.(100))
+    emit_setting_ifndef.(:INDEX_STREAK_DECAY, resolve_tap_timing.(150))
   %>
 
   //
@@ -546,44 +630,6 @@ behaviors {
   //
   <%
     emit_setting_ifndef.(:INDEX_REPEAT_DECAY, resolve_tap_timing.(300))
-  %> // "tap then hold" for key auto-repeat
-
-  //
-  // PLAIN_HOLDING_TYPE defines the flavor of ZMK hold-tap behavior to use
-  // for index fingers (which Miryoku assigns to Shift) on home row keys.
-  //
-  // NOTE: The "tap-preferred" flavor of ZMK hold-tap for index finger keys
-  // allows faster activation of the Shift modifier (without having to wait
-  // for the modified key to be released as the "balanced" flavor requires).
-  //
-  <%
-    emit_setting_ifndef.(:PLAIN_HOLDING_TYPE, :INDEX_HOLDING_TYPE)
-  %>
-
-  //
-  // PLAIN_HOLDING_TIME defines how long you need to hold (milliseconds)
-  // index finger keys in order to send their modifiers to the computer
-  // (i.e. "register" them) for mod-click mouse usage (e.g. Shift-Click).
-  //
-  <%
-    emit_setting_ifndef.(:PLAIN_HOLDING_TIME, resolve_tap_timing.(200))
-  %>
-
-  //
-  // PLAIN_STREAK_DECAY defines how long you need to wait (milliseconds)
-  // after typing before you can use home row mods again.  It prevents
-  // unintended activation of home row mods when you're actively typing.
-  //
-  <%
-    emit_setting_ifndef.(:PLAIN_STREAK_DECAY, :HOMEY_STREAK_DECAY)
-  %>
-
-  //
-  // PLAIN_REPEAT_DECAY defines how much time you have left (milliseconds)
-  // after tapping a key to hold it again in order to make it auto-repeat.
-  //
-  <%
-    emit_setting_ifndef.(:PLAIN_REPEAT_DECAY, resolve_tap_timing.(300))
   %> // "tap then hold" for key auto-repeat
 
   //
@@ -627,7 +673,7 @@ behaviors {
   // the space thumb key to activate.  Shorter holds are treated as taps.
   //
   <%
-    emit_setting_ifndef.(:SPACE_HOLDING_TIME, resolve_tap_timing.(170))
+    emit_setting_ifndef.(:SPACE_HOLDING_TIME, :THUMB_HOLDING_TIME)
   %>
 
   //
@@ -876,42 +922,6 @@ behaviors {
   %>
 
   //
-  // Key repetition access keys on the index fingers
-  //
-  plain: plain_typing_layer {
-    compatible = "zmk,behavior-hold-tap";
-    flavor = PLAIN_HOLDING_TYPE;
-    tapping-term-ms = <PLAIN_HOLDING_TIME>;
-    quick-tap-ms = <PLAIN_REPEAT_DECAY>; // enable repeat
-    require-prior-idle-ms = <PLAIN_STREAK_DECAY>;
-    #binding-cells = <2>;
-    bindings = <&mo>, <&kp>;
-    retro-tap; // tap on standalone hold
-  };
-  #ifdef LAYER_Engram
-  plain_engram_COMMA: plain_typing_layer_engram_COMMA {
-    compatible = "zmk,behavior-hold-tap";
-    flavor = PLAIN_HOLDING_TYPE;
-    tapping-term-ms = <PLAIN_HOLDING_TIME>;
-    quick-tap-ms = <PLAIN_REPEAT_DECAY>; // enable repeat
-    require-prior-idle-ms = <PLAIN_STREAK_DECAY>;
-    #binding-cells = <2>;
-    bindings = <&mo>, <&engram_COMMA>;
-    retro-tap; // tap on standalone hold
-  };
-  plain_engram_DOT: plain_typing_layer_engram_DOT {
-    compatible = "zmk,behavior-hold-tap";
-    flavor = PLAIN_HOLDING_TYPE;
-    tapping-term-ms = <PLAIN_HOLDING_TIME>;
-    quick-tap-ms = <PLAIN_REPEAT_DECAY>; // enable repeat
-    require-prior-idle-ms = <PLAIN_STREAK_DECAY>;
-    #binding-cells = <2>;
-    bindings = <&mo>, <&engram_DOT>;
-    retro-tap; // tap on standalone hold
-  };
-  #endif
-
-  //
   // Thumb cluster hold-tap keys for Miryoku layers
   //
   thumb: thumb_layer_access {
@@ -921,14 +931,9 @@ behaviors {
     quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
     #binding-cells = <2>;
     bindings = <&mo>, <&kp>;
-  };
-  thumb_parang_left: thumb_layer_access_parang_left {
-    compatible = "zmk,behavior-hold-tap";
-    flavor = THUMB_HOLDING_TYPE;
-    tapping-term-ms = <THUMB_HOLDING_TIME>;
-    quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
-    #binding-cells = <2>;
-    bindings = <&mo>, <&parang_left>;
+    #ifdef THUMB_FORGIVENESS
+    retro-tap; // tap on standalone hold
+    #endif
   };
   stumb: thumb_layer_access_sticky_key_oneshot {
     compatible = "zmk,behavior-hold-tap";
@@ -945,10 +950,45 @@ behaviors {
     quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
     #binding-cells = <2>;
     bindings = <&mo>, <&kp>;
-    #ifdef THUMB_FORGIVENESS
-    retro-tap;
-    #endif
+    retro-tap; // tap on standalone hold
   };
+  crumb_parang_left: crumb_layer_access_parang_left {
+    compatible = "zmk,behavior-hold-tap";
+    flavor = THUMB_HOLDING_TYPE;
+    tapping-term-ms = <THUMB_HOLDING_TIME>;
+    quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
+    #binding-cells = <2>;
+    bindings = <&mo>, <&parang_left>;
+    retro-tap; // tap on standalone hold
+  };
+  crumb_parang_right: crumb_layer_access_parang_right {
+    compatible = "zmk,behavior-hold-tap";
+    flavor = THUMB_HOLDING_TYPE;
+    tapping-term-ms = <THUMB_HOLDING_TIME>;
+    quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
+    #binding-cells = <2>;
+    bindings = <&mo>, <&parang_right>;
+    retro-tap; // tap on standalone hold
+  };
+  #ifdef LAYER_Engram
+  crumb_engram_AT: crumb_layer_access_engram_AT {
+    compatible = "zmk,behavior-hold-tap";
+    flavor = THUMB_HOLDING_TYPE;
+    tapping-term-ms = <THUMB_HOLDING_TIME>;
+    quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
+    #binding-cells = <2>;
+    bindings = <&mo>, <&engram_AT>;
+    retro-tap; // tap on standalone hold
+  };
+  thumb_engram_AT: thumb_layer_access_engram_AT {
+    compatible = "zmk,behavior-hold-tap";
+    flavor = THUMB_HOLDING_TYPE;
+    tapping-term-ms = <THUMB_HOLDING_TIME>;
+    quick-tap-ms = <THUMB_REPEAT_DECAY>; // enable repeat
+    #binding-cells = <2>;
+    bindings = <&mo>, <&engram_AT>;
+  };
+  #endif
   space: thumb_layer_access_spacebar {
     compatible = "zmk,behavior-hold-tap";
     flavor = SPACE_HOLDING_TYPE;
@@ -980,29 +1020,6 @@ behaviors {
     bindings = <&kp RPAR>, <&kp GT>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
   };
-
-  //
-  // Shift + LEFT_BRACKET = LEFT_CURLY_BRACE
-  //
-  bracket_left: left_bracket_and_left_curly_brace {
-    compatible = "zmk,behavior-mod-morph";
-    #binding-cells = <0>;
-    //bindings = <&kp RA(N8)>, <&kp RA(N7)>;
-    bindings = <&kp RA(N8)>, <&kp _LBRC>; 
-    mods = <(MOD_LSFT|MOD_RSFT)>;
-  };
-
-  //
-  // Shift + LEFT_BRACKET = LEFT_CURLY_BRACE
-  //
-  bracket_right: right_bracket_and_right_curly_brace {
-    compatible = "zmk,behavior-mod-morph";
-    #binding-cells = <0>;
-    //bindings = <&kp RA(N9)>, <&kp RA(N0)>;
-    bindings = <&kp RA(N9)>, <&kp _RBRC>;
-    mods = <(MOD_LSFT|MOD_RSFT)>;
-  };
-
 
   //
   // Custom shifted pairs for the Engram layout
@@ -1115,19 +1132,26 @@ behaviors {
 
 macros {
 
+  ZMK_MACRO(dot_dot,
+    wait-ms = <0>;
+    tap-ms = <0>;
+    bindings = <&macro_tap &kp DOT &kp DOT>;
+  )
+
   //
   // Linux Magic System Request Key - hold this down and type REISUB
   // - https://www.kernel.org/doc/html/latest/admin-guide/sysrq.html
   // - https://github.com/manna-harbour/miryoku/discussions/259
+  // - https://unix.stackexchange.com/a/143955 (use LALT, not RALT)
   //
   ZMK_MACRO(linux_magic_sysrq,
     wait-ms = <0>;
     tap-ms = <0>;
     bindings
-      = <&macro_press &mo 0 &kp RALT>
+      = <&macro_press &mo 0 &kp LALT>
       , <&macro_tap &kp PRINTSCREEN>
       , <&macro_pause_for_release>
-      , <&macro_release &mo 0 &kp RALT>
+      , <&macro_release &mo 0 &kp LALT>
       ;
   )
 
@@ -1202,12 +1226,12 @@ macros {
   ZMK_MACRO(select_word_right,
     wait-ms = <SELECT_WORD_DELAY>;
     tap-ms = <SELECT_WORD_DELAY>;
-    bindings = <&kp _W(RIGHT) &kp _W(LEFT) &kp _W(LS(RIGHT))>;
+    bindings = <&kp _WORD(RIGHT) &kp _WORD(LEFT) &kp _WORD(LS(RIGHT))>;
   )
   ZMK_MACRO(select_word_left,
     wait-ms = <SELECT_WORD_DELAY>;
     tap-ms = <SELECT_WORD_DELAY>;
-    bindings = <&kp _W(LEFT) &kp _W(RIGHT) &kp _W(LS(LEFT))>;
+    bindings = <&kp _WORD(LEFT) &kp _WORD(RIGHT) &kp _WORD(LS(LEFT))>;
   )
 
   //
@@ -1222,12 +1246,12 @@ macros {
   ZMK_MACRO(extend_word_right,
     wait-ms = <SELECT_WORD_DELAY>;
     tap-ms = <SELECT_WORD_DELAY>;
-    bindings = <&kp _W(LS(RIGHT))>;
+    bindings = <&kp _WORD(LS(RIGHT))>;
   )
   ZMK_MACRO(extend_word_left,
     wait-ms = <SELECT_WORD_DELAY>;
     tap-ms = <SELECT_WORD_DELAY>;
-    bindings = <&kp _W(LS(LEFT))>;
+    bindings = <&kp _WORD(LS(LEFT))>;
   )
 
   //
@@ -1280,6 +1304,9 @@ macros {
   //
   // WORLD_USE_COMPOSE uses OS-native Compose keycodes instead of Unicode
   // for characters in the "compositions" section of the `world.yaml` file.
+  //
+  // NOTE: keep this setting disabled when using UnicodeHexInput in macOS
+  // to avoid inconsistent behavior when typing World vs Emoji layer keys.
   //
   //#define WORLD_USE_COMPOSE
 
@@ -1737,7 +1764,11 @@ macros {
                                 end
 
         next_modifiers = "(#{
-          remaining_precedence.map{ |m| "MOD_#{m}" }.join("|")
+          remaining_precedence.reject do |modifier|
+            modifier =~ /_/ and next_modifier !~ /_/
+          end
+          .map{ |m| "MOD_#{ m.split("_").first }" }
+          .join("|")
         })"
         emit_zmk_mod_morph.(id, accent_id, next_id, next_modifiers)
         remaining_precedence.shift
@@ -1844,6 +1875,261 @@ macros {
   emoji_hair_style_preset: &emoji_curly_hair {};
 #elif EMOJI_HAIR_STYLE_PRESET == 'W'
   emoji_hair_style_preset: &emoji_white_hair {};
+#endif
+<%
+  end
+%>
+
+//////////////////////////////////////////////////////////////////////////
+//
+// Mouse keys (keyboard mouse control) requires v24.12 firmware or newer:
+// override the "HID_POINTING" setting to "y" in Advanced Configuration
+// and then select "v24.12" firmware from the drop-down menu located at
+// Glove80 Layout Editor > Settings > Advanced Settings > Firmware Version
+//
+// Alternatively, you can use either PR36 or PR23 beta firmware for this:
+// select "community.pr36.mouse-keys" from the drop-down menu located at
+// Glove80 Layout Editor > Settings > Advanced Settings > Firmware Version
+//
+// - https://github.com/moergo-sc/zmk/pull/36
+// - https://github.com/moergo-sc/zmk/pull/23
+// - https://gist.github.com/krissen/dd27082e7ab0575619c7a31f4d2ec7ae
+// - https://github.com/zmkfirmware/zmk/compare/main...urob:zmk:mouse-3.2
+// - https://github.com/caksoylar/zmk-config/commit/0020c23c544cd7111013f0114609d1fb90e0e475
+// - https://github.com/caksoylar/zmk-config/commit/e35ee2f08788927683df7bbdd7fc73434473886e
+//
+//////////////////////////////////////////////////////////////////////////
+
+//
+// NATURAL_SCROLLING reverses the directionality of the mouse scroll wheel
+// to support "natural scrolling" in macOS and other desktop environments.
+//
+//#define NATURAL_SCROLLING
+
+#ifdef NATURAL_SCROLLING
+  #define MOUSE_SCROLL_UP    SCRL_DOWN
+  #define MOUSE_SCROLL_DOWN  SCRL_UP
+  #define MOUSE_SCROLL_LEFT  SCRL_RIGHT
+  #define MOUSE_SCROLL_RIGHT SCRL_LEFT
+#else
+  #define MOUSE_SCROLL_UP    SCRL_UP
+  #define MOUSE_SCROLL_DOWN  SCRL_DOWN
+  #define MOUSE_SCROLL_LEFT  SCRL_LEFT
+  #define MOUSE_SCROLL_RIGHT SCRL_RIGHT
+#endif
+
+//
+// MOUSE_MOTION_DELAY defines how long to wait (milliseconds) before starting
+// to move the mouse pointer.
+//
+#ifndef MOUSE_MOTION_DELAY
+#define MOUSE_MOTION_DELAY 0
+#endif
+
+//
+// MOUSE_MOTION_ACCELERATION_EXPONENT sets how the mouse pointer accelerates:
+//
+// acceleration exponent 0: uniform speed
+// acceleration exponent 1: uniform acceleration
+// acceleration exponent 2: uniform jerk
+//
+#ifndef MOUSE_MOTION_ACCELERATION_EXPONENT
+#define MOUSE_MOTION_ACCELERATION_EXPONENT 1
+#endif
+
+//
+// MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED defines how long to wait (milliseconds)
+// before the mouse pointer speed is suddenly boosted to the maximum value.
+//
+#ifndef MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED
+#define MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED 300
+#endif
+
+//
+// MOUSE_MOTION_MAXIMUM_SPEED defines how quickly the mouse pointer can move.
+//
+#ifndef MOUSE_MOTION_MAXIMUM_SPEED
+#define MOUSE_MOTION_MAXIMUM_SPEED 600
+#endif
+
+//
+// MOUSE_SCROLL_DELAY defines how long to wait (milliseconds) before starting
+// to move the mouse pointer.
+//
+#ifndef MOUSE_SCROLL_DELAY
+#define MOUSE_SCROLL_DELAY 0
+#endif
+
+//
+// MOUSE_SCROLL_ACCELERATION_EXPONENT sets how the mouse pointer accelerates:
+//
+// acceleration exponent 0: uniform speed
+// acceleration exponent 1: uniform acceleration
+// acceleration exponent 2: uniform jerk
+//
+#ifndef MOUSE_SCROLL_ACCELERATION_EXPONENT
+#define MOUSE_SCROLL_ACCELERATION_EXPONENT 0
+#endif
+
+//
+// MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED defines how long to wait (milliseconds)
+// before the mouse pointer speed is suddenly boosted to the maximum value.
+//
+#ifndef MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED
+#define MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED 300
+#endif
+
+//
+// MOUSE_SCROLL_MAXIMUM_SPEED defines how quickly the mouse wheel can scroll.
+//
+#ifndef MOUSE_SCROLL_MAXIMUM_SPEED
+#define MOUSE_SCROLL_MAXIMUM_SPEED 10
+#endif
+
+//
+// MOUSE_SCALER_FINE sets parameters for the &zip_xy_scaler input processor:
+// https://zmk.dev/docs/keymaps/input-processors/scaler
+//
+#ifndef MOUSE_SCALER_FINE
+#define MOUSE_SCALER_FINE 1 16
+#endif
+
+//
+// MOUSE_SCALER_SLOW sets parameters for the &zip_xy_scaler input processor:
+// https://zmk.dev/docs/keymaps/input-processors/scaler
+//
+#ifndef MOUSE_SCALER_SLOW
+#define MOUSE_SCALER_SLOW 1 4
+#endif
+
+//
+// MOUSE_SCALER_FAST sets parameters for the &zip_xy_scaler input processor:
+// https://zmk.dev/docs/keymaps/input-processors/scaler
+//
+#ifndef MOUSE_SCALER_FAST
+#define MOUSE_SCALER_FAST 4 1
+#endif
+
+//
+// MOUSE_SCALER_WARP sets parameters for the &zip_xy_scaler input processor:
+// https://zmk.dev/docs/keymaps/input-processors/scaler
+//
+#ifndef MOUSE_SCALER_WARP
+#define MOUSE_SCALER_WARP 12 1
+#endif
+
+<%
+  emit_at_root_level.() do
+%>
+#ifdef ENABLE_MOUSE_KEYS
+  // ==== MOUSE-KEY <section begins> ====
+  #define ZMK_POINTING_DEFAULT_MOVE_VAL MOUSE_MOTION_MAXIMUM_SPEED
+  #define ZMK_POINTING_DEFAULT_SCRL_VAL MOUSE_SCROLL_MAXIMUM_SPEED
+  #include <dt-bindings/zmk/pointing.h>
+  &mmv {
+    delay-ms = <MOUSE_MOTION_DELAY>;
+    acceleration-exponent = <MOUSE_MOTION_ACCELERATION_EXPONENT>;
+    time-to-max-speed-ms = <MOUSE_MOTION_TIME_TO_MAXIMUM_SPEED>;
+  };
+  &msc {
+    delay-ms = <MOUSE_SCROLL_DELAY>;
+    acceleration-exponent = <MOUSE_SCROLL_ACCELERATION_EXPONENT>;
+    time-to-max-speed-ms = <MOUSE_SCROLL_TIME_TO_MAXIMUM_SPEED>;
+  };
+  //
+  // Scaling for mouse movement, based on @caksoylar's example:
+  // https://github.com/caksoylar/zmk-config/commit/0020c23c544cd7111013f0114609d1fb90e0e475
+  //
+  #include <input/processors.dtsi>
+  &mmv_input_listener {
+    #ifdef LAYER_MouseFine
+    fine {
+      layers = <LAYER_MouseFine>;
+      input-processors = <&zip_xy_scaler MOUSE_SCALER_FINE>;
+    };
+    #endif
+    #ifdef LAYER_MouseSlow
+    slow {
+      layers = <LAYER_MouseSlow>;
+      input-processors = <&zip_xy_scaler MOUSE_SCALER_SLOW>;
+    };
+    #endif
+    #ifdef LAYER_MouseFast
+    fast {
+      layers = <LAYER_MouseFast>;
+      input-processors = <&zip_xy_scaler MOUSE_SCALER_FAST>;
+    };
+    #endif
+    #ifdef LAYER_MouseWarp
+    warp {
+      layers = <LAYER_MouseWarp>;
+      input-processors = <&zip_xy_scaler MOUSE_SCALER_WARP>;
+    };
+    #endif
+  };
+  //
+  // Scaling for mouse scrolling, based on @caksoylar's example:
+  // https://github.com/caksoylar/zmk-config/commit/e35ee2f08788927683df7bbdd7fc73434473886e
+  //
+  #include <zephyr/dt-bindings/input/input-event-codes.h>
+  / {
+    input_processors {
+      zip_scroll_scaling_processor: zip_scroll_scaling_processor {
+        compatible = "zmk,input-processor-scaler";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+        track-remainders;
+      };
+    };
+  };
+  &msc_input_listener {
+    #ifdef LAYER_MouseFine
+    fine {
+      layers = <LAYER_MouseFine>;
+      input-processors = <&zip_scroll_scaling_processor MOUSE_SCALER_FINE>;
+    };
+    #endif
+    #ifdef LAYER_MouseSlow
+    slow {
+      layers = <LAYER_MouseSlow>;
+      input-processors = <&zip_scroll_scaling_processor MOUSE_SCALER_SLOW>;
+    };
+    #endif
+    #ifdef LAYER_MouseFast
+    fast {
+      layers = <LAYER_MouseFast>;
+      input-processors = <&zip_scroll_scaling_processor MOUSE_SCALER_FAST>;
+    };
+    #endif
+    #ifdef LAYER_MouseWarp
+    warp {
+      layers = <LAYER_MouseWarp>;
+      input-processors = <&zip_scroll_scaling_processor MOUSE_SCALER_WARP>;
+    };
+    #endif
+  };
+  // ==== MOUSE-KEY <section ends> =====
+#else
+  #define mkp none
+  #define mmv none
+  #define msc none
+  #define LCLK
+  #define MCLK
+  #define RCLK
+  #define MB1
+  #define MB2
+  #define MB3
+  #define MB4
+  #define MB5
+  #define MOVE_UP
+  #define MOVE_DOWN
+  #define MOVE_LEFT
+  #define MOVE_RIGHT
+  #define SCRL_UP
+  #define SCRL_DOWN
+  #define SCRL_LEFT
+  #define SCRL_RIGHT
 #endif
 <%
   end

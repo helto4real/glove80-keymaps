@@ -31,7 +31,7 @@ COPY --chmod=755 <<EOF /bin/entrypoint.sh
     echo "Checking out \$BRANCH from moergo-sc/zmk" >&2
     cd /src
     git fetch origin
-    git fetch origin pull/30/head:pr36
+    git fetch origin pull/36/head:pr36
     git checkout -q --detach pr36
     # git checkout -q --detach "\$BRANCH"
 

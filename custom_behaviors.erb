@@ -27,4 +27,25 @@
             >;
     };
 
+  //
+  // Shift + LEFT_BRACKET = LEFT_CURLY_BRACE
+  //
+  bracket_left: left_bracket_and_left_curly_brace {
+    compatible = "zmk,behavior-mod-morph";
+    #binding-cells = <0>;
+    //bindings = <&kp RA(N8)>, <&kp RA(N7)>;
+    bindings = <&kp RA(N8)>, <&kp _LBRC>; 
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+  };
+
+  //
+  // Shift + LEFT_BRACKET = LEFT_CURLY_BRACE
+  //
+  bracket_right: right_bracket_and_right_curly_brace {
+    compatible = "zmk,behavior-mod-morph";
+    #binding-cells = <0>;
+    //bindings = <&kp RA(N9)>, <&kp RA(N0)>;
+    bindings = <&kp RA(N9)>, <&kp _RBRC>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+  };
     ////////////////////////////////////////////////////////////////////////////////
