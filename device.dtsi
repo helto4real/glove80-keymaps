@@ -273,8 +273,8 @@
           ___ ___ ___ ___ ___                                             ___ ___ ___ ___ ___
           ___ COR COR COR COR ___                                     ___ ___ ___ ___ ___ ___
           ___ COR COR COR COR GDN                                     GDN COR PUR PUR COR ___
-          YLW MAJ CYN GRN YLW GDN                                     GDN AZU AZU AZU AZU YLW
-          PNK SPG SPG SPG PUR GDN     COR COR ___     SPG SPG SPG     AZU AZU AZU AZU YLW PNK
+          YLW MAJ CYN GRN YLW GDN                                     AZU AZU AZU AZU PNK YLW
+          PNK SPG SPG SPG PUR GDN     COR COR ___     SPG SPG SPG     GDN AZU AZU AZU AZU PNK
           PNK PUR PUR PUR PUR         RED ___ ___     SPG SPG SPG         PUR PUR PUR PUR PNK
         >;
         layer-id = <LAYER_Cursor>;
