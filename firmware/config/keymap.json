@@ -3,7 +3,7 @@
   "firmware_api_version": "1",
   "locale": "sv-SE",
   "uuid": "",
-  "parent_uuid": "28c3b8e3-a93b-4c37-86b5-2c8f58d38321",
+  "parent_uuid": "c252828b-f862-4be2-876a-2f7c02fe6715",
   "unlisted": false,
   "date": 1757760053,
   "creator": "helto4real",
@@ -5912,8 +5912,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "PIPE",
-            "params": []
+            "value": "RA",
+            "params": [
+              {
+                "value": "NON_US_BSLH",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -5922,15 +5927,6 @@
         "params": [
           {
             "value": "HASH",
-            "params": []
-          }
-        ]
-      },
-      {
-        "value": "&kp",
-        "params": [
-          {
-            "value": "DLLR",
             "params": []
           }
         ]
@@ -5950,10 +5946,19 @@
         ]
       },
       {
-        "value": "&kp",
+        "value": "Custom",
         "params": [
           {
-            "value": "EXCL",
+            "value": "&base_caret",
+            "params": []
+          }
+        ]
+      },
+      {
+        "value": "Custom",
+        "params": [
+          {
+            "value": "&base_tilde",
             "params": []
           }
         ]
@@ -5962,10 +5967,10 @@
         "value": "&kp",
         "params": [
           {
-            "value": "RA",
+            "value": "LS",
             "params": [
               {
-                "value": "N2",
+                "value": "N1",
                 "params": []
               }
             ]
@@ -6198,7 +6203,7 @@
         "value": "&kp",
         "params": [
           {
-            "value": "PLUS",
+            "value": "MINUS",
             "params": []
           }
         ]
@@ -6273,7 +6278,7 @@
         "value": "&kp",
         "params": [
           {
-            "value": "LT",
+            "value": "NON_US_BSLH",
             "params": []
           }
         ]
@@ -6282,8 +6287,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "GT",
-            "params": []
+            "value": "LS",
+            "params": [
+              {
+                "value": "NON_US_BSLH",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -6421,8 +6431,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "EQUAL",
-            "params": []
+            "value": "LS",
+            "params": [
+              {
+                "value": "N0",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -6448,7 +6463,7 @@
         "value": "&kp",
         "params": [
           {
-            "value": "RA",
+            "value": "LS",
             "params": [
               {
                 "value": "N8",
@@ -6462,17 +6477,13 @@
         "value": "&kp",
         "params": [
           {
-            "value": "COMMA",
-            "params": []
-          }
-        ]
-      },
-      {
-        "value": "&kp",
-        "params": [
-          {
-            "value": "DOT",
-            "params": []
+            "value": "RA",
+            "params": [
+              {
+                "value": "N8",
+                "params": []
+              }
+            ]
           }
         ]
       },
@@ -6494,10 +6505,24 @@
         "value": "&kp",
         "params": [
           {
+            "value": "LS",
+            "params": [
+              {
+                "value": "N9",
+                "params": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "value": "&kp",
+        "params": [
+          {
             "value": "RA",
             "params": [
               {
-                "value": "LT",
+                "value": "N2",
                 "params": []
               }
             ]
