@@ -30,12 +30,10 @@ COPY --chmod=755 <<EOF /bin/entrypoint.sh
 
     echo "Checking out \$BRANCH from moergo-sc/zmk" >&2
     cd /src
-    git fetch origin
     git fetch origin pull/36/head:pr36
     git checkout -q --detach pr36
-    # git checkout -q --detach "\$BRANCH"
 
-    echo 'Building Glove80 firmware' >&2
+    echo 'Building Glove80  Tomas firmware' >&2
     cd /firmware
     nix-build ./firmware/config --arg firmware 'import /src/default.nix {}' -j2 -o /tmp/combined --show-trace
     install -o "\$UID" -g "\$GID" /tmp/combined/glove80.uf2 ./glove80.uf2

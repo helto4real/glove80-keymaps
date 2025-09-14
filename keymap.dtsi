@@ -13,11 +13,13 @@
 // TIP: Add more setting overrides here instead of editing them below.
 // CUSTOM -- DEFINES HELTO
 ////////////////////////////////////////////////////////////////////////////////
-#define SPACE_HOLDING_TYPE "tap-preferred"
-#define SPACE_HOLDING_TIME 275
+//#define SPACE_HOLDING_TYPE "tap-preferred"
+//#define SPACE_HOLDING_TIME 275
 #define OPERATING_SYSTEM 'L'
-#define SPACE_FORGIVENESS  // allow lingering taps on the space bar
-#define WORLD_USE_COMPOSE  // use native Compose in place of Unicode
+//#define SPACE_FORGIVENESS  // allow lingering taps on the space bar
+//#define WORLD_USE_COMPOSE  // use native Compose in place of Unicode
+#define ENABLE_MOUSE_KEYS  // requires HID_POINTING override to "y"
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
