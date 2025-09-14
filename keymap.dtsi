@@ -169,7 +169,7 @@
 #define KEY_RH_C4R4 L
 #define KEY_RH_C5R4 SEMI
 #define KEY_RH_C6R4 SQT
-#define KEY_LH_C6R5 LSFT
+#define KEY_LH_C6R5 0
 #define KEY_LH_C5R5 Z
 #define KEY_LH_C4R5 X
 #define KEY_LH_C3R5 C
@@ -186,7 +186,7 @@
 #define KEY_RH_C3R5 COMMA
 #define KEY_RH_C4R5 DOT
 #define KEY_RH_C5R5 FSLH
-#define KEY_RH_C6R5 RSFT
+#define KEY_RH_C6R5 0
 #define KEY_LH_C6R6 0
 #define KEY_LH_C5R6 HOME
 #define KEY_LH_C4R6 0

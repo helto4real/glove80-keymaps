@@ -1032,7 +1032,7 @@
 #define KEY_RH_C4R4 L
 #define KEY_RH_C5R4 SEMI
 #define KEY_RH_C6R4 SQT
-#define KEY_LH_C6R5 LSFT
+#define KEY_LH_C6R5 0
 #define KEY_LH_C5R5 Z
 #define KEY_LH_C4R5 X
 #define KEY_LH_C3R5 C
@@ -1049,7 +1049,7 @@
 #define KEY_RH_C3R5 COMMA
 #define KEY_RH_C4R5 DOT
 #define KEY_RH_C5R5 FSLH
-#define KEY_RH_C6R5 RSFT
+#define KEY_RH_C6R5 0
 #define KEY_LH_C6R6 0
 #define KEY_LH_C5R6 HOME
 #define KEY_LH_C4R6 0
@@ -10986,12 +10986,12 @@ UNICODE_MORPH_MODS
 
         layer_Symbol {
             bindings = <
-      &email        &none                &none         &none                &none                                                                                                                        &none                &none                &none                &none   &none
- &base_grave   &kp RA(N8)           &kp LS(N8)    &kp LS(N9)           &kp RA(N9)        &kp DOT                                                                                    &none                &none                &none                &none                &none   &none
-    &kp EXCL    &kp COMMA           &kp RA(N7)    &kp RA(N0)        &kp LS(COMMA)  &kp LS(MINUS)                                                                                &kp GRAVE  &sk RIGHT_INDEX_MOD  &sk RIGHT_MIDDY_MOD  &sk RIGHT_RINGY_MOD  &sk RIGHT_PINKY_MOD   &none
-    &kp HASH  &base_caret           &kp LS(N0)  &kp LS(FSLH)           &kp RA(N4)   &kp LS(BSLH)                                                                               &kp LS(N2)             &kp BSPC              &kp TAB            &kp SPACE              &kp RET   &none
- &base_tilde       &kp LT  &kp RA(NON_US_BSLH)      &kp FSLH  &kp LS(NON_US_BSLH)     &kp LS(N7)  &kp RA(MINUS)      &kp DOT  &kp LS(BSLH)   &none   &none              &none     &kp SQT              &kp DEL          &kp LS(TAB)              &kp INS              &kp ESC   &none
-   &kp _C(H)   &kp LS(N6)             &kp BSLH    &kp LS(N2)            &kp MINUS                    &kp LS(N5)  &kp LS(DOT)    &kp RA(N2)   &none   &none  &tog LAYER_Symbol                            &none                &none                &none                &none   &none
+      &email        &none                &none         &none                &none                                                                                                                         &none                &none                &none                &none   &none
+ &base_grave   &kp RA(N9)           &kp LS(N8)    &kp LS(N9)            &kp COMMA        &kp DOT                                                                                     &none                &none                &none                &none                &none   &none
+  &kp RA(N8)   &kp LS(N1)           &kp RA(N7)    &kp RA(N0)        &kp LS(COMMA)  &kp LS(MINUS)                                                                               &base_grave  &sk RIGHT_INDEX_MOD  &sk RIGHT_MIDDY_MOD  &sk RIGHT_RINGY_MOD  &sk RIGHT_PINKY_MOD   &none
+    &kp HASH  &base_caret           &kp LS(N0)  &kp LS(FSLH)           &kp RA(N4)   &kp LS(BSLH)                                                                                &kp LS(N2)             &kp BSPC              &kp TAB            &kp SPACE              &kp RET   &none
+ &base_tilde       &kp LT  &kp RA(NON_US_BSLH)      &kp FSLH  &kp LS(NON_US_BSLH)     &kp LS(N7)  &kp RA(MINUS)      &kp DOT  &kp LS(BSLH)   &none   &none              &none     &kp BSLH              &kp DEL          &kp LS(TAB)              &kp INS              &kp ESC   &none
+    &dot_dot   &kp LS(N6)             &kp BSLH    &kp LS(N2)            &kp MINUS                    &kp LS(N5)  &kp LS(DOT)    &kp RA(N2)   &none   &none  &tog LAYER_Symbol                             &none                &none                &none                &none   &none
             >;
         };
 
