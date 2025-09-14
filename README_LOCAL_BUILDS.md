@@ -10,7 +10,7 @@ The build script will use the `keymap.zmk` as a template and replace the content
 
 Follow the following steps below:
 
-1. Make your customization's in the online keymap editor by first cloing the v40 version of Sunakus keymap.
+1. Make your customization's in the online keymap editor by first cloing the v42 (at this time RC) version of Sunakus keymap.
 2. Download and replace the `keymap.zmk` file
 3. Download and replace the keymap.json file (you will have to set `enable local config` in settings) and use download button.
 4. Do any customizations to the `.erb` files as fit. You can make your customizations easier to rebase using external files as example in this repo
